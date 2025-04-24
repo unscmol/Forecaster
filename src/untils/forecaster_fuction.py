@@ -92,3 +92,51 @@ def check_missing_values(data_dictionary, columns_to_check=None, key_name_column
             print(all_missing_dfs[0].head())
 
     return missing_values_info, all_missing_dfs
+
+
+
+def split_train_test_data_by_time(data_dic, train_ratio=0.8):
+    """
+    将data_dic中的每个数据框按照时间顺序划分为训练集和测试集。
+
+    参数:
+    -----------
+    data_dic : dict
+        包含各风电场数据框的字典。
+    train_ratio : float, 默认=0.8
+        用于训练的数据比例（取值0到1之间）。
+
+    返回:
+    --------
+    train_data_dic : dict
+        包含各风电场训练数据框的字典。
+    test_data_dic : dict
+        包含各风电场测试数据框的字典。
+    """
+    train_data_dic = {}
+    test_data_dic = {}
+
+    for station_id, df in data_dic.items():
+        # 确保数据已按时间排序（如果没有，请取消下面的注释）
+        # df = df.sort_index()  # 如果索引是时间戳
+        # 或者，如果有时间列
+        # df = df.sort_values('时间列名')
+
+        # 计算训练集的边界索引
+        train_size = int(len(df) * train_ratio)
+
+        # 按照时间顺序划分数据集
+        train_df = df.iloc[:train_size].copy()
+        test_df = df.iloc[train_size:].copy()
+
+        # 重置索引
+        train_df = train_df.reset_index(drop=True)
+        test_df = test_df.reset_index(drop=True)
+
+        # 存储划分结果
+        train_data_dic[station_id] = train_df
+        test_data_dic[station_id] = test_df
+
+        print(f"场站 {station_id}: 训练集大小 = {len(train_df)}, 测试集大小 = {len(test_df)}")
+
+    return train_data_dic, test_data_dic
