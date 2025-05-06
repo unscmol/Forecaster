@@ -21,9 +21,9 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-class GRU_Encoder(nn.Module):
+class User_Model(nn.Module):
     def __init__(self, input_dim, hidden_dim):
-        super(GRU_Encoder, self).__init__()
+        super(User_Model, self).__init__()
         self.hidden_dim = hidden_dim
         self.gru = nn.GRU(input_dim, hidden_dim, batch_first=True)
         self.fc_out = nn.Linear(hidden_dim, 1)

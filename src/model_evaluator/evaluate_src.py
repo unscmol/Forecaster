@@ -43,7 +43,7 @@ class Task_Evaluator:
         # 读入测试数据
         test_dic = joblib.load('../data/user_data/{}/test_job_data/format_test_dic_{}_{}_{}.joblib'.format(self.user_id, self.user_id, self.task_id, self.job_number))
         # 读入模型超参数字典
-        model_class_hyperparams = joblib.load('../data/user_data/{}/upload_data/model_class_hyperparams_{}_{}_{}'.format(self.user_id, self.user_id, self.task_id, self.job_number))
+        model_class_hyperparams = joblib.load('../data/user_data/{}/upload_data/model_class_hyperparams_{}_{}_{}.joblib'.format(self.user_id, self.user_id, self.task_id, self.job_number))
         name_ls = list(test_dic.keys())
         pth_dic, scaler_dic, model_dic = {}, {}, {}
         for station_id in name_ls:
@@ -54,15 +54,15 @@ class Task_Evaluator:
 
             # 动态导入模型类文件
             model_file_path = '../data/user_data/{}/upload_data/model_class_{}_{}_{}_{}.py'.format(self.user_id,station_id,self.user_id,self.task_id,self.job_number)
-
+            model_hyperpara = model_class_hyperparams[station_id] # 读入实例化的超参数
             # 获取模型文件的绝对路径
             spec = importlib.util.spec_from_file_location("User_Model_{}".format(station_id), model_file_path)
             module = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(module)
 
             # 获取模型类 User_Model 并实例化
-            model_class = getattr(module, "GRU_Encoder")
-            model_dic[station_id] = model_class(1,128)  # 实例化模型
+            model_class = getattr(module, "User_Model")
+            model_dic[station_id] = model_class(**model_hyperpara)  # 实例化模型
 
             # 加载模型参数
             model_dic[station_id].load_state_dict(pth_dic[station_id])
@@ -70,15 +70,42 @@ class Task_Evaluator:
 
 
         # 3. 测试主流程
-
+        # 3.1 读入数据并处理成batchsize为1
         for station_id in name_ls:
-            inp_data_v, out_data_v = test_dic[station_id]
+            model = model_dic[station_id] # 加载场站模型
+            scaler = scaler_dic[station_id] # 加载场站归一化参数
+            inp_data_v, out_data_v = test_dic[station_id]  # 加载场站测试集[sample, 16, 1]
+            inp_v, out_v = torch.tensor(inp_data_v, dtype=torch.float32), torch.tensor(out_data_v, dtype=torch.float32)
+            test_loader = DataLoader(TensorDataset(inp_v, out_v), shuffle=False, batch_size=1)
+            # 3.2 开始测试
+            true_data, pre_data = [], []
+            model.eval()
+            with torch.no_grad():
+                for batch_idx, (inp_x, yy) in enumerate(test_loader):
+                    inp_x, yy = inp_x.to(device), yy.to(device)
+                    # 归一化输入
 
-            scaler = scaler_dic[station_id]
-            print(inp_data_v.shape)
-            # inp_v, out_v = torch.tensor(inp_data_v, dtype=torch.float32), torch.tensor(out_data_v, dtype=torch.float32)
-            # test_loader = DataLoader(TensorDataset(inp_v, out_v), shuffle=False, batch_size=batchsize)
+                    pred = model(inp_x)
+                    if yy.shape[0] != 1:
+                        true_data.append(yy.cpu().numpy().squeeze())
+                        pre_data.append(pred.cpu().numpy().squeeze())
+                    else:
+                        true_data.append(yy.cpu().numpy().reshape(1, -1))
+                        pre_data.append(pred.cpu().numpy().reshape(1, -1))
 
+            true = np.concatenate(true_data, axis=0)
+            pre = np.concatenate(pre_data, axis=0)
+
+            scaler_max, scaler_min = scaler_t.data_max_[0], scaler_t.data_min_[0]
+
+            true_original = reverse_normalize(true, scaler_max, scaler_min)
+            pre_original = reverse_normalize(pre, scaler_max, scaler_min)
+
+            pickle.dump([true_original, pre_original],
+                        open('../../result/sample_result/{}_single.pkl'.format(name), 'wb'))
+            pickle.dump([true, pre], open('../../result/sample_result/{}_single_n.pkl'.format(name), 'wb'))
+            acc = acc_cal(true, pre)
+            print('{}的预测精度为{}'.format(name, acc))
 
     def execute_eva(self):
         # 创建任务映射字典, 新建任务需要在字典中关联任务ID和续写的函数
