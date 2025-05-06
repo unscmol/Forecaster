@@ -129,9 +129,6 @@ def split_train_test_data_by_time(data_dic, train_ratio=0.8):
         train_df = df.iloc[:train_size].copy()
         test_df = df.iloc[train_size:].copy()
 
-        # 重置索引
-        train_df = train_df.reset_index(drop=True)
-        test_df = test_df.reset_index(drop=True)
 
         # 存储划分结果
         train_data_dic[station_id] = train_df
@@ -140,3 +137,6 @@ def split_train_test_data_by_time(data_dic, train_ratio=0.8):
         print(f"场站 {station_id}: 训练集大小 = {len(train_df)}, 测试集大小 = {len(test_df)}")
 
     return train_data_dic, test_data_dic
+
+
+

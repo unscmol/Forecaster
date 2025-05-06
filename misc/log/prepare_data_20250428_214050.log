@@ -1,0 +1,17 @@
+======================================== 
+Start time: 2025/04/28 周一 21:40:50.66 
+Using conda environment: pytorch_gpu 
+Starting Python script execution... 
+场站 cl: 训练集大小 = 28032, 测试集大小 = 7008
+场站 js: 训练集大小 = 28032, 测试集大小 = 7008
+场站 jz: 训练集大小 = 28032, 测试集大小 = 7008
+场站 lym: 训练集大小 = 28032, 测试集大小 = 7008
+场站 qss: 训练集大小 = 28032, 测试集大小 = 7008
+场站 wtl: 训练集大小 = 28032, 测试集大小 = 7008
+场站 zh: 训练集大小 = 28032, 测试集大小 = 7008
+Moved: temp_testset_xiaowang_1_0.joblib
+Moved: temp_trainset_xiaowang_1_0.joblib
+Success saving test data in user_data folder!
+ 
+End time: 2025/04/28 周一 21:40:52.65 
+Script execution completed 
