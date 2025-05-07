@@ -1,0 +1,14 @@
+<h2>欢迎，{{ request.user.username }}</h2>
+
+<form method="post" action="{% url 'execute_cmd' %}">
+  {% csrf_token %}
+  <input type="text" name="command" placeholder="输入CMD命令"><br>
+  <button type="submit">执行命令</button>
+</form>
+
+{% if result %}
+  <h3>执行结果：</h3>
+  <pre>{{ result }}</pre>
+{% endif %}
+
+<a href="{% url 'logout' %}">退出登录</a>
