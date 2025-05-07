@@ -26,7 +26,7 @@ class User_Model(nn.Module):
         super(User_Model, self).__init__()
         self.hidden_dim = hidden_dim
         self.gru = nn.GRU(input_dim, hidden_dim, batch_first=True)
-        self.fc_out = nn.Linear(hidden_dim, 1)
+        self.fc_out = nn.Linear(hidden_dim, 16)
 
     def forward(self, x):
         out, hn = self.gru(x)

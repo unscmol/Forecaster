@@ -21,7 +21,7 @@ def copy_model_class(source_filename, target_filename):
 if __name__ == "__main__":
     with open("../config/job_config/job_params.json", "r") as f:
         job_params = json.load(f)
-    test_dic = joblib.load('../data/user_data/{}/test_job_data/format_test_dic_{}_{}_{}.joblib'.format(job_params['user_id'], job_params['user_id'], job_params['task_id'], job_params['job_number']))
+    test_dic = joblib.load('../data/user_data/{}/test_job_data/{}/format_test_dic_{}_{}_{}.joblib'.format(job_params['user_id'], job_params['job_number'], job_params['user_id'], job_params['task_id'], job_params['job_number']))
     name_ls = list(test_dic.keys())
     # 设置源文件名和目标文件名
     for name in name_ls:

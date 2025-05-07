@@ -1,0 +1,14 @@
+======================================== 
+Start time: 2025/05/07 周三 15:39:00.19 
+Using conda environment: pytorch_gpu 
+Starting Python script execution... 
+The accuracy of station cl is -372.4377632141113%
+The accuracy of station js is -703.0633926391602%
+The accuracy of station jz is -311.36088371276855%
+The accuracy of station lym is -830.341625213623%
+The accuracy of station qss is -338.3342742919922%
+The accuracy of station wtl is -416.424560546875%
+The accuracy of station zh is -306.50949478149414%
+ 
+End time: 2025/05/07 周三 15:39:24.43 
+Script execution completed 

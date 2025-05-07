@@ -18,7 +18,7 @@ from torch.optim import Adam
 from torch.utils.data import TensorDataset, DataLoader, Dataset
 #引入自定义函数
 sys.path.append("../data/untils")
-
+from evaluate_function import acc_cal
 
 GPU_switch = True
 device = torch.device("cuda" if (torch.cuda.is_available() and GPU_switch) else "cpu")
@@ -41,7 +41,7 @@ class Task_Evaluator:
 
         # 1. 加载固定的测试数据并处理
         # 读入测试数据
-        test_dic = joblib.load('../data/user_data/{}/test_job_data/format_test_dic_{}_{}_{}.joblib'.format(self.user_id, self.user_id, self.task_id, self.job_number))
+        test_dic = joblib.load('../data/user_data/{}/test_job_data/{}/format_test_dic_{}_{}_{}.joblib'.format(self.user_id, self.job_number, self.user_id, self.task_id, self.job_number))
         # 读入模型超参数字典
         model_class_hyperparams = joblib.load('../data/user_data/{}/upload_data/model_class_hyperparams_{}_{}_{}.joblib'.format(self.user_id, self.user_id, self.task_id, self.job_number))
         name_ls = list(test_dic.keys())
@@ -80,32 +80,30 @@ class Task_Evaluator:
             # 3.2 开始测试
             true_data, pre_data = [], []
             model.eval()
+            model.to(device)
             with torch.no_grad():
                 for batch_idx, (inp_x, yy) in enumerate(test_loader):
                     inp_x, yy = inp_x.to(device), yy.to(device)
                     # 归一化输入
+                    scaler_max, scaler_min = scaler.data_max_[0], scaler.data_min_[0]
+                    inp_x_normalized = (inp_x - scaler_min) / (scaler_max - scaler_min)
+                    pred = model(inp_x_normalized)
 
-                    pred = model(inp_x)
+                    pred_denormalized = pred * (scaler_max - scaler_min) + scaler_min
+
                     if yy.shape[0] != 1:
                         true_data.append(yy.cpu().numpy().squeeze())
-                        pre_data.append(pred.cpu().numpy().squeeze())
+                        pre_data.append(pred_denormalized.cpu().numpy().squeeze())
                     else:
                         true_data.append(yy.cpu().numpy().reshape(1, -1))
-                        pre_data.append(pred.cpu().numpy().reshape(1, -1))
+                        pre_data.append(pred_denormalized.cpu().numpy().reshape(1, -1))
 
             true = np.concatenate(true_data, axis=0)
             pre = np.concatenate(pre_data, axis=0)
+            joblib.dump([true, pre], '../data/user_data/{}/test_job_data/{}/result_{}_{}_{}_{}.joblib'.format(self.user_id, self.job_number, station_id, self.user_id, self.task_id, self.job_number))
 
-            scaler_max, scaler_min = scaler_t.data_max_[0], scaler_t.data_min_[0]
-
-            true_original = reverse_normalize(true, scaler_max, scaler_min)
-            pre_original = reverse_normalize(pre, scaler_max, scaler_min)
-
-            pickle.dump([true_original, pre_original],
-                        open('../../result/sample_result/{}_single.pkl'.format(name), 'wb'))
-            pickle.dump([true, pre], open('../../result/sample_result/{}_single_n.pkl'.format(name), 'wb'))
-            acc = acc_cal(true, pre)
-            print('{}的预测精度为{}'.format(name, acc))
+            acc = acc_cal(true, pre, scaler_max)
+            print('The accuracy of station {} is {}%'.format(station_id, acc))
 
     def execute_eva(self):
         # 创建任务映射字典, 新建任务需要在字典中关联任务ID和续写的函数

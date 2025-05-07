@@ -84,7 +84,13 @@ class Generate_cached_data:
             data_test = np.array(origin_data.iloc[:, 1]).reshape(-1,1) # 取出power列
             inp_data, out_data = create_data(data_test, self.para['inp_len'], self.para['out_len'], self.para['step_len'])
             test_dic[name] = [inp_data, out_data]
-        joblib.dump(test_dic, '../data/user_data/{}/test_job_data/format_test_dic_{}_{}_{}.joblib'.format(self.user_id,self.user_id, self.task_id, self.job_number))
+        # 目标路径
+        path = f'../data/user_data/{self.user_id}/test_job_data/{self.job_number}'
+        # 如果路径不存在，创建路径
+        os.makedirs(path, exist_ok=True)
+        # 保存文件
+        file_path = os.path.join(path, f'format_test_dic_{self.user_id}_{self.task_id}_{self.job_number}.joblib')
+        joblib.dump(test_dic, file_path)
         print('Success saving test data in user_data folder!')
 
     def execute_task(self):
