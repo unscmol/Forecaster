@@ -1,0 +1,901 @@
+卷 系统 的文件夹 PATH 列表
+卷序列号为 3643-84F4
+C:.
+|   .gitignore
+|   LICENSE
+|   project_structure.txt
+|   README.md
+|   功率预测模型校验系统.pptx
+|   
++---.idea
+|   |   .gitignore
+|   |   .name
+|   |   Forecaster.iml
+|   |   misc.xml
+|   |   modules.xml
+|   |   vcs.xml
+|   |   workspace.xml
+|   |   
+|   \---inspectionProfiles
+|           profiles_settings.xml
+|           Project_Default.xml
+|           
++---config
+|   +---job_config
+|   |       job_params.json
+|   |       
+|   \---system_config
++---data
+|   +---processed
+|   |   +---archive_data
+|   |   |   \---dataset_1
+|   |   |           total_data_dic.joblib
+|   |   |           
+|   |   \---fixed_data
+|   |       \---dataset_1
+|   +---raw
+|   |   +---aa处理后的数据
+|   |   |   +---GEF2012
+|   |   |   |       gef_1_transformed.csv
+|   |   |   |       gef_2_transformed.csv
+|   |   |   |       gef_3_transformed.csv
+|   |   |   |       gef_4_transformed.csv
+|   |   |   |       gef_5_transformed.csv
+|   |   |   |       gef_6_transformed.csv
+|   |   |   |       gef_7_transformed.csv
+|   |   |   |       
+|   |   |   +---GEF2014
+|   |   |   |       gef_201410_transformed.csv
+|   |   |   |       gef_20141_transformed.csv
+|   |   |   |       gef_20142_transformed.csv
+|   |   |   |       gef_20143_transformed.csv
+|   |   |   |       gef_20144_transformed.csv
+|   |   |   |       gef_20145_transformed.csv
+|   |   |   |       gef_20146_transformed.csv
+|   |   |   |       gef_20147_transformed.csv
+|   |   |   |       gef_20148_transformed.csv
+|   |   |   |       gef_20149_transformed.csv
+|   |   |   |       
+|   |   |   +---乌兰察布1风电#4
+|   |   |   |       1风电#4.csv
+|   |   |   |       1风电#4wp_nwp.csv
+|   |   |   |       1风电#4_0nwp.csv
+|   |   |   |       1风电#4_5nwp.csv
+|   |   |   |       
+|   |   |   +---乌兰察布幸福风电场
+|   |   |   |       幸福风电场.csv
+|   |   |   |       
+|   |   |   +---华能清能院吉林白城
+|   |   |   |       wf2.csv
+|   |   |   |       wf3.csv
+|   |   |   |       wf4.csv
+|   |   |   |       
+|   |   |   +---华能清能院河南濮阳
+|   |   |   |       wf1(2022年5-8月仅次日单点位).csv
+|   |   |   |       wf1.csv
+|   |   |   |       wf2(2022年5-8月仅次日单点位).csv
+|   |   |   |       wf2.csv
+|   |   |   |       wf3(2022年5-8月仅次日单点位).csv
+|   |   |   |       wf3.csv
+|   |   |   |       wf4(2022年5-8月仅次日单点位).csv
+|   |   |   |       wf4.csv
+|   |   |   |       wf5(2022年5-8月仅次日单点位).csv
+|   |   |   |       wf5.csv
+|   |   |   |       wf6(2022年5-8月仅次日单点位).csv
+|   |   |   |       wf6.csv
+|   |   |   |       
+|   |   |   +---大唐赤峰
+|   |   |   |   |   wf1.csv
+|   |   |   |   |   wf10.csv
+|   |   |   |   |   wf2.csv
+|   |   |   |   |   wf3.csv
+|   |   |   |   |   wf4.csv
+|   |   |   |   |   wf5.csv
+|   |   |   |   |   wf6.csv
+|   |   |   |   |   wf7.csv
+|   |   |   |   |   wf8.csv
+|   |   |   |   |   wf9.csv
+|   |   |   |   |   
+|   |   |   |   \---GEF2012
+|   |   |   |           gef_1_transformed.csv
+|   |   |   |           gef_2_transformed.csv
+|   |   |   |           gef_3_transformed.csv
+|   |   |   |           gef_4_transformed.csv
+|   |   |   |           gef_5_transformed.csv
+|   |   |   |           gef_6_transformed.csv
+|   |   |   |           gef_7_transformed.csv
+|   |   |   |           
+|   |   |   +---江西数据
+|   |   |   |       cl.csv
+|   |   |   |       jgl.csv
+|   |   |   |       js.csv
+|   |   |   |       jz.csv
+|   |   |   |       lym.csv
+|   |   |   |       wtl.csv
+|   |   |   |       zh.csv
+|   |   |   |       
+|   |   |   +---浙江丽水
+|   |   |   |       wf1.csv
+|   |   |   |       wf2.csv
+|   |   |   |       
+|   |   |   \---金风竞赛
+|   |   |           WF1520.csv
+|   |   |           WF1531.csv
+|   |   |           WF1545.csv
+|   |   |           WF1700.csv
+|   |   |           WF1771.csv
+|   |   |           WF225.csv
+|   |   |           WF342.csv
+|   |   |           WF384.csv
+|   |   |           WF402.csv
+|   |   |           WF410.csv
+|   |   |           WF420.csv
+|   |   |           WF815.csv
+|   |   |           
+|   |   +---aa归一化后的数据
+|   |   |   |   wf1(2022年5-8月仅次日单点位).csv
+|   |   |   |   
+|   |   |   +---GEF2012
+|   |   |   |       GEF2012.csv
+|   |   |   |       gef_1.csv
+|   |   |   |       gef_2.csv
+|   |   |   |       gef_3.csv
+|   |   |   |       gef_4.csv
+|   |   |   |       gef_5.csv
+|   |   |   |       gef_6.csv
+|   |   |   |       gef_7.csv
+|   |   |   |       
+|   |   |   +---GEF2014
+|   |   |   |       GEF2014.csv
+|   |   |   |       gef_20141.csv
+|   |   |   |       gef_201410.csv
+|   |   |   |       gef_20142.csv
+|   |   |   |       gef_20143.csv
+|   |   |   |       gef_20144.csv
+|   |   |   |       gef_20145.csv
+|   |   |   |       gef_20146.csv
+|   |   |   |       gef_20147.csv
+|   |   |   |       gef_20148.csv
+|   |   |   |       gef_20149.csv
+|   |   |   |       
+|   |   |   +---乌兰察布1风电#4
+|   |   |   |       #4wp.csv
+|   |   |   |       #4wp.xlsx
+|   |   |   |       1风电#4wp_nwp.csv
+|   |   |   |       
+|   |   |   +---乌兰察布幸福风电场
+|   |   |   |       xingfu.csv
+|   |   |   |       幸福风电场.csv
+|   |   |   |       
+|   |   |   +---华能清能院吉林白城
+|   |   |   |       jilinbaicheng.csv
+|   |   |   |       wf2.csv
+|   |   |   |       wf3.csv
+|   |   |   |       wf4.csv
+|   |   |   |       
+|   |   |   +---华能清能院河南濮阳
+|   |   |   |       henanpuyang.csv
+|   |   |   |       wf1.csv
+|   |   |   |       wf2.csv
+|   |   |   |       wf3.csv
+|   |   |   |       wf4.csv
+|   |   |   |       wf5.csv
+|   |   |   |       wf6.csv
+|   |   |   |       
+|   |   |   +---大唐赤峰
+|   |   |   |       chifeng.csv
+|   |   |   |       wf1.csv
+|   |   |   |       wf10.csv
+|   |   |   |       wf2.csv
+|   |   |   |       wf3.csv
+|   |   |   |       wf4.csv
+|   |   |   |       wf5.csv
+|   |   |   |       wf6.csv
+|   |   |   |       wf7.csv
+|   |   |   |       wf8.csv
+|   |   |   |       wf9.csv
+|   |   |   |       
+|   |   |   +---江西数据
+|   |   |   |       cl.csv
+|   |   |   |       jgl.csv
+|   |   |   |       jiangxi.csv
+|   |   |   |       js.csv
+|   |   |   |       jz.csv
+|   |   |   |       lym.csv
+|   |   |   |       wtl.csv
+|   |   |   |       zh.csv
+|   |   |   |       
+|   |   |   +---浙江丽水
+|   |   |   |       wf1.csv
+|   |   |   |       wf2.csv
+|   |   |   |       
+|   |   |   \---金风竞赛
+|   |   |           wf1520.csv
+|   |   |           wf1531.csv
+|   |   |           wf1545.csv
+|   |   |           wf1700.csv
+|   |   |           wf1771.csv
+|   |   |           wf225.csv
+|   |   |           wf342.csv
+|   |   |           wf384.csv
+|   |   |           wf402.csv
+|   |   |           wf410.csv
+|   |   |           wf420.csv
+|   |   |           wf815.csv
+|   |   |           
+|   |   +---aa课题组所有数据
+|   |   |   |   GEF.rar
+|   |   |   |   甘肃-风光电站数据-完整版.csv
+|   |   |   |   福建电站—总加功率.csv
+|   |   |   |   
+|   |   |   +---GEF2012
+|   |   |   |       gef_1.csv
+|   |   |   |       gef_2.csv
+|   |   |   |       gef_3.csv
+|   |   |   |       gef_4.csv
+|   |   |   |       gef_5.csv
+|   |   |   |       gef_6.csv
+|   |   |   |       gef_7.csv
+|   |   |   |       
+|   |   |   +---GEF2014
+|   |   |   |       gef_20141.csv
+|   |   |   |       gef_201410.csv
+|   |   |   |       gef_20142.csv
+|   |   |   |       gef_20143.csv
+|   |   |   |       gef_20144.csv
+|   |   |   |       gef_20145.csv
+|   |   |   |       gef_20146.csv
+|   |   |   |       gef_20147.csv
+|   |   |   |       gef_20148.csv
+|   |   |   |       gef_20149.csv
+|   |   |   |       
+|   |   |   +---三峡项目乌兰察布
+|   |   |   |   +---1风电#4
+|   |   |   |   |   |   clean_data_2023.8.1-2024.01.09.csv
+|   |   |   |   |   |   clean_data_22.5-23.6.csv
+|   |   |   |   |   |   clean_data_7.csv
+|   |   |   |   |   |   real_data_measure.csv
+|   |   |   |   |   |   real_data_measure.pkl
+|   |   |   |   |   |   real_data_scada.csv
+|   |   |   |   |   |   real_data_scada.pkl
+|   |   |   |   |   |   三峡一期风电机组坐标(1).npy
+|   |   |   |   |   |   三峡一期风电机组坐标.csv
+|   |   |   |   |   |   三峡一期风电机组坐标.npy
+|   |   |   |   |   |   
+|   |   |   |   |   +---2024
+|   |   |   |   |   |   |   1-4号站NWP点位.xlsx
+|   |   |   |   |   |   |   
+|   |   |   |   |   |   \---data
+|   |   |   |   |   |       +---clean_power_data
+|   |   |   |   |   |       |       clean_data_2022.5.1-2023.6.30.csv
+|   |   |   |   |   |       |       clean_data_2023.7.1_2023.7.31.csv
+|   |   |   |   |   |       |       clean_data_2023.8.1-2024.04.28.csv
+|   |   |   |   |   |       |       clean_data_2023.8.1-2024.6.22.csv
+|   |   |   |   |   |       |       clean_hy_2023.4.1-2023.6.30.csv
+|   |   |   |   |   |       |       
+|   |   |   |   |   |       \---yj_nwp_site0_11_30
+|   |   |   |   |   |               yj_nwp_site0_22.1.3_23.10.7.csv
+|   |   |   |   |   |               yj_nwp_site0_23.10.31.csv
+|   |   |   |   |   |               yj_nwp_site0_23.10.8_23.10.30.csv
+|   |   |   |   |   |               yj_nwp_site0_23.11.1_23.11.30.csv
+|   |   |   |   |   |               yj_nwp_site0_23.12.1_23.12.31.csv
+|   |   |   |   |   |               yj_nwp_site0_24.01.01-01.10.csv
+|   |   |   |   |   |               yj_nwp_site0_24.01.11-01.26.csv
+|   |   |   |   |   |               yj_nwp_site0_24.01.27-02.13.csv
+|   |   |   |   |   |               yj_nwp_site0_24.02.14-03.16.csv
+|   |   |   |   |   |               yj_nwp_site0_24.03.17-04.15.csv
+|   |   |   |   |   |               yj_nwp_site0_24.04.16-04.30.csv
+|   |   |   |   |   |               yj_nwp_site0_24.05.01-05.31.csv
+|   |   |   |   |   |               yj_nwp_site0_24.06.01-06.23.csv
+|   |   |   |   |   |               yj_nwp_site5_22.1.3_23.10.7.csv
+|   |   |   |   |   |               yj_nwp_site5_23.10.31.csv
+|   |   |   |   |   |               yj_nwp_site5_23.10.8_23.10.30.csv
+|   |   |   |   |   |               yj_nwp_site5_23.11.1_23.11.30.csv
+|   |   |   |   |   |               yj_nwp_site5_23.12.1_23.12.31.csv
+|   |   |   |   |   |               yj_nwp_site5_24.01.01-01.10.csv
+|   |   |   |   |   |               yj_nwp_site5_24.01.11-01.26.csv
+|   |   |   |   |   |               yj_nwp_site5_24.01.27-02.13.csv
+|   |   |   |   |   |               yj_nwp_site5_24.02.14-03.16.csv
+|   |   |   |   |   |               yj_nwp_site5_24.03.17-04.15.csv
+|   |   |   |   |   |               yj_nwp_site5_24.04.16-04.30.csv
+|   |   |   |   |   |               yj_nwp_site5_24.05.01-05.31.csv
+|   |   |   |   |   |               yj_nwp_site5_24.06.01-06.23.csv
+|   |   |   |   |   |               
+|   |   |   |   |   \---yj_nwp_site0_11_30
+|   |   |   |   |           yj_nwp_site0_10_30.csv
+|   |   |   |   |           yj_nwp_site0_10_31.csv
+|   |   |   |   |           yj_nwp_site0_10_7.csv
+|   |   |   |   |           yj_nwp_site0_11_30.csv
+|   |   |   |   |           yj_nwp_site0_24.01.01-01.10.csv
+|   |   |   |   |           yj_nwp_site5_10_30.csv
+|   |   |   |   |           yj_nwp_site5_10_31.csv
+|   |   |   |   |           yj_nwp_site5_10_7.csv
+|   |   |   |   |           yj_nwp_site5_11_30.csv
+|   |   |   |   |           yj_nwp_site5_24.01.01-01.10.csv
+|   |   |   |   |           
+|   |   |   |   \---幸福风电场
+|   |   |   |           风电场NWP数据.csv
+|   |   |   |           风电场机组信息.xls
+|   |   |   |           风电场机组数据.csv
+|   |   |   |           风电场测风塔数据.csv
+|   |   |   |           
+|   |   |   +---华能清能院吉林白城
+|   |   |   |       wf1机组数据.csv
+|   |   |   |       wf1测风塔数据.csv
+|   |   |   |       wf2NWP数据.csv
+|   |   |   |       wf2机组数据.csv
+|   |   |   |       wf2测风塔数据.csv
+|   |   |   |       wf3NWP数据.csv
+|   |   |   |       wf3机组数据.csv
+|   |   |   |       wf3测风塔数据(2个测风塔).csv
+|   |   |   |       wf4NWP数据.csv
+|   |   |   |       wf4机组数据.csv
+|   |   |   |       wf4测风塔数据(3个测风塔).csv
+|   |   |   |       wf5机组数据.csv
+|   |   |   |       wf5测风塔数据.csv
+|   |   |   |       wf6机组数据.csv
+|   |   |   |       wf6测风塔数据.csv
+|   |   |   |       风电场坐标统计.xls
+|   |   |   |       风电场机组信息.xls
+|   |   |   |       
+|   |   |   +---华能清能院河南濮阳
+|   |   |   |       wf1NWP数据(2022年5-8月仅次日单点位).csv
+|   |   |   |       wf1NWP数据.csv
+|   |   |   |       wf1场站数据.csv
+|   |   |   |       wf1机组数据.csv
+|   |   |   |       wf2NWP数据(2022年5-8月仅次日单点位).csv
+|   |   |   |       wf2NWP数据.csv
+|   |   |   |       wf2场站数据.csv
+|   |   |   |       wf2机组数据.csv
+|   |   |   |       wf3NWP数据(2022年5-8月仅次日单点位).csv
+|   |   |   |       wf3NWP数据.csv
+|   |   |   |       wf3场站数据.csv
+|   |   |   |       wf3机组数据.csv
+|   |   |   |       wf4NWP数据(2022年5-8月仅次日单点位).csv
+|   |   |   |       wf4NWP数据.csv
+|   |   |   |       wf4场站数据.csv
+|   |   |   |       wf4机组数据.csv
+|   |   |   |       wf5NWP数据(2022年5-8月仅次日单点位).csv
+|   |   |   |       wf5NWP数据.csv
+|   |   |   |       wf5场站数据.csv
+|   |   |   |       wf5机组数据.csv
+|   |   |   |       wf6NWP数据(2022年5-8月仅次日单点位).csv
+|   |   |   |       wf6NWP数据.csv
+|   |   |   |       wf6场站数据.csv
+|   |   |   |       wf6机组数据.csv
+|   |   |   |       风电场坐标统计.xls
+|   |   |   |       风电场机组信息.xls
+|   |   |   |       
+|   |   |   +---大唐赤峰
+|   |   |   |       wf10NWP数据.csv
+|   |   |   |       wf10机组数据.csv
+|   |   |   |       wf1NWP数据.csv
+|   |   |   |       wf1机组数据.csv
+|   |   |   |       wf2NWP数据.csv
+|   |   |   |       wf2机组数据.csv
+|   |   |   |       wf3NWP数据.csv
+|   |   |   |       wf3机组数据.csv
+|   |   |   |       wf4NWP数据.csv
+|   |   |   |       wf4机组数据.csv
+|   |   |   |       wf5NWP数据.csv
+|   |   |   |       wf5机组数据.csv
+|   |   |   |       wf6NWP数据.csv
+|   |   |   |       wf6机组数据.csv
+|   |   |   |       wf7NWP数据.csv
+|   |   |   |       wf7机组数据.csv
+|   |   |   |       wf8NWP数据.csv
+|   |   |   |       wf8机组数据.csv
+|   |   |   |       wf9NWP数据.csv
+|   |   |   |       wf9机组数据.csv
+|   |   |   |       风电场坐标统计.xls
+|   |   |   |       风电场坐标统计_更正.xls
+|   |   |   |       风电场机组信息.xls
+|   |   |   |       
+|   |   |   +---江西数据
+|   |   |   |   |   数据分析.xlsx
+|   |   |   |   |   装机容量.xlsx
+|   |   |   |   |   风速.xlsx
+|   |   |   |   |   
+|   |   |   |   +---10泉水山风电场
+|   |   |   |   |       功率_泉水山风电场_20190101_20191231.xls
+|   |   |   |   |       实测数据.xlsx
+|   |   |   |   |       泉水山气压.xlsx
+|   |   |   |   |       泉水山温度.xlsx
+|   |   |   |   |       泉水山湿度.xlsx
+|   |   |   |   |       泉水山风向.xlsx
+|   |   |   |   |       泉水山风电短期、超短期功率预测.xlsx
+|   |   |   |   |       泉水山风速.xlsx
+|   |   |   |   |       
+|   |   |   |   +---11天排山风电场
+|   |   |   |   |       功率_天排山风电场_20190101_20191231.xls
+|   |   |   |   |       天排山气压.xlsx
+|   |   |   |   |       天排山温度.xlsx
+|   |   |   |   |       天排山湿度.xlsx
+|   |   |   |   |       天排山风向.xlsx
+|   |   |   |   |       天排山风电短期、超短期功率预测.xlsx
+|   |   |   |   |       天排山风速.xlsx
+|   |   |   |   |       实测数据.xlsx
+|   |   |   |   |       
+|   |   |   |   +---12梧桐岭风电场
+|   |   |   |   |       功率_梧桐岭风电场_20190101_20191231.xls
+|   |   |   |   |       实测数据.xlsx
+|   |   |   |   |       梧桐岭气压.xlsx
+|   |   |   |   |       梧桐岭温度.xlsx
+|   |   |   |   |       梧桐岭湿度.xlsx
+|   |   |   |   |       梧桐岭风向.xlsx
+|   |   |   |   |       梧桐岭风电短期、超短期功率预测.xlsx
+|   |   |   |   |       梧桐岭风速.xlsx
+|   |   |   |   |       
+|   |   |   |   +---13五老峰风电场
+|   |   |   |   |       五老峰气压.xlsx
+|   |   |   |   |       五老峰温度.xlsx
+|   |   |   |   |       五老峰湿度.xlsx
+|   |   |   |   |       五老峰风向.xlsx
+|   |   |   |   |       五老峰风电短期、超短期功率预测.xlsx
+|   |   |   |   |       五老峰风速.xlsx
+|   |   |   |   |       功率_五老峰风电场_20190101_20191231.xls
+|   |   |   |   |       实测数据.xlsx
+|   |   |   |   |       
+|   |   |   |   +---14皂湖风电场
+|   |   |   |   |       功率_皂湖风电场_20190101_20191231.xls
+|   |   |   |   |       实测数据.xlsx
+|   |   |   |   |       皂湖气压.xlsx
+|   |   |   |   |       皂湖温度.xlsx
+|   |   |   |   |       皂湖湿度.xlsx
+|   |   |   |   |       皂湖风向.xlsx
+|   |   |   |   |       皂湖风电短期、超短期功率预测.xlsx
+|   |   |   |   |       皂湖风速.xlsx
+|   |   |   |   |       
+|   |   |   |   +---15长岭风电场
+|   |   |   |   |       功率_长岭风电场_20190101_20191231.xls
+|   |   |   |   |       实测数据.xlsx
+|   |   |   |   |       长岭气压.xlsx
+|   |   |   |   |       长岭温度.xlsx
+|   |   |   |   |       长岭湿度.xlsx
+|   |   |   |   |       长岭风向.xlsx
+|   |   |   |   |       长岭风电短期、超短期功率预测.xlsx
+|   |   |   |   |       长岭风速.xlsx
+|   |   |   |   |       
+|   |   |   |   +---1钓鱼台风电场
+|   |   |   |   |       功率_钓鱼台风电场_20190101_20191231.xls
+|   |   |   |   |       实测数据.xlsx
+|   |   |   |   |       钓鱼台气压.xlsx
+|   |   |   |   |       钓鱼台温度.xlsx
+|   |   |   |   |       钓鱼台湿度.xlsx
+|   |   |   |   |       钓鱼台风向.xlsx
+|   |   |   |   |       钓鱼台风电短期、超短期功率预测.xlsx
+|   |   |   |   |       钓鱼台风速.xlsx
+|   |   |   |   |       
+|   |   |   |   +---2基隆嶂风电场
+|   |   |   |   |       功率_基隆嶂风电场_20190101_20191231.xls
+|   |   |   |   |       基隆嶂气压.xlsx
+|   |   |   |   |       基隆嶂温度.xlsx
+|   |   |   |   |       基隆嶂湿度.xlsx
+|   |   |   |   |       基隆嶂风向.xlsx
+|   |   |   |   |       基隆嶂风电短期、超短期功率预测.xlsx
+|   |   |   |   |       基隆嶂风速.xlsx
+|   |   |   |   |       实测数据.xlsx
+|   |   |   |   |       
+|   |   |   |   +---3吉山风电场
+|   |   |   |   |       功率_吉山风电场_20190101_20191231.xls
+|   |   |   |   |       吉山气压.xlsx
+|   |   |   |   |       吉山温度.xlsx
+|   |   |   |   |       吉山湿度.xlsx
+|   |   |   |   |       吉山风向.xlsx
+|   |   |   |   |       吉山风电短期、超短期功率预测.xlsx
+|   |   |   |   |       吉山风速.xlsx
+|   |   |   |   |       实测数据.xlsx
+|   |   |   |   |       
+|   |   |   |   +---4江州风电场
+|   |   |   |   |       功率_江州风电场_20190101_20191231.xls
+|   |   |   |   |       实测数据.xlsx
+|   |   |   |   |       江州气压.xlsx
+|   |   |   |   |       江州温度.xlsx
+|   |   |   |   |       江州湿度.xlsx
+|   |   |   |   |       江州风向.xlsx
+|   |   |   |   |       江州风电短期、超短期功率预测.xlsx
+|   |   |   |   |       江州风速.xlsx
+|   |   |   |   |       
+|   |   |   |   +---5蒋公岭风电场
+|   |   |   |   |       功率_蒋公岭风电场_20190101_20191231.xls
+|   |   |   |   |       实测数据.xlsx
+|   |   |   |   |       蒋公岭气压.xlsx
+|   |   |   |   |       蒋公岭温度.xlsx
+|   |   |   |   |       蒋公岭湿度.xlsx
+|   |   |   |   |       蒋公岭风向.xlsx
+|   |   |   |   |       蒋公岭风电短期、超短期功率预测.xlsx
+|   |   |   |   |       蒋公岭风速.xlsx
+|   |   |   |   |       
+|   |   |   |   +---6老爷庙风电场
+|   |   |   |   |       功率_老爷庙风电场_20190101_20191231.xls
+|   |   |   |   |       实测数据.xlsx
+|   |   |   |   |       老爷庙气压.xlsx
+|   |   |   |   |       老爷庙温度.xlsx
+|   |   |   |   |       老爷庙湿度.xlsx
+|   |   |   |   |       老爷庙风向.xlsx
+|   |   |   |   |       老爷庙风电场测风塔温度.xlsx
+|   |   |   |   |       老爷庙风电场测风塔湿度.xlsx
+|   |   |   |   |       老爷庙风电场测风塔风速.xlsx
+|   |   |   |   |       老爷庙风电短期、超短期功率预测.xlsx
+|   |   |   |   |       老爷庙风速.xlsx
+|   |   |   |   |       
+|   |   |   |   +---7灵华山风电场
+|   |   |   |   |       功率_灵华山风电场_20190101_20191231.xls
+|   |   |   |   |       实测数据.xlsx
+|   |   |   |   |       灵华山气压.xlsx
+|   |   |   |   |       灵华山温度.xlsx
+|   |   |   |   |       灵华山湿度.xlsx
+|   |   |   |   |       灵华山风向.xlsx
+|   |   |   |   |       灵华山风电短期、超短期功率预测.xlsx
+|   |   |   |   |       灵华山风速.xlsx
+|   |   |   |   |       
+|   |   |   |   +---8乱罗嶂风电场
+|   |   |   |   |       乱罗嶂气压.xlsx
+|   |   |   |   |       乱罗嶂温度.xlsx
+|   |   |   |   |       乱罗嶂湿度.xlsx
+|   |   |   |   |       乱罗嶂风向.xlsx
+|   |   |   |   |       乱罗嶂风电短期、超短期功率预测.xlsx
+|   |   |   |   |       乱罗嶂风速.xlsx
+|   |   |   |   |       功率_乱罗嶂风电场_20190101_20191231.xls
+|   |   |   |   |       实测数据.xlsx
+|   |   |   |   |       
+|   |   |   |   +---9七琴城上风电场
+|   |   |   |   |       七琴城上气压.xlsx
+|   |   |   |   |       七琴城上温度.xlsx
+|   |   |   |   |       七琴城上湿度.xlsx
+|   |   |   |   |       七琴城上风向.xlsx
+|   |   |   |   |       七琴城上风电短期、超短期功率预测.xlsx
+|   |   |   |   |       七琴城上风速.xlsx
+|   |   |   |   |       功率_七琴城上风电场_20190101_20191231.xls
+|   |   |   |   |       实测数据.xlsx
+|   |   |   |   |       
+|   |   |   |   +---scaler
+|   |   |   |   |       weather_1.pkl
+|   |   |   |   |       ws_irr_wp_data.pkl
+|   |   |   |   |       wt_data_cl.pkl
+|   |   |   |   |       wt_data_hx.pkl
+|   |   |   |   |       wt_data_hy.pkl
+|   |   |   |   |       wt_data_jgl.pkl
+|   |   |   |   |       wt_data_js.pkl
+|   |   |   |   |       wt_data_jz.pkl
+|   |   |   |   |       wt_data_lc.pkl
+|   |   |   |   |       wt_data_lk.pkl
+|   |   |   |   |       wt_data_lym.pkl
+|   |   |   |   |       wt_data_qss.pkl
+|   |   |   |   |       wt_data_rf.pkl
+|   |   |   |   |       wt_data_wtl.pkl
+|   |   |   |   |       wt_data_xy.pkl
+|   |   |   |   |       wt_data_zh.pkl
+|   |   |   |   |       wt_data_zs.pkl
+|   |   |   |   |       
+|   |   |   |   +---wf_power
+|   |   |   |   |       cl.xlsx
+|   |   |   |   |       jlz.xlsx
+|   |   |   |   |       js.xlsx
+|   |   |   |   |       jz.xlsx
+|   |   |   |   |       lhs.xlsx
+|   |   |   |   |       llz.xlsx
+|   |   |   |   |       lym.xlsx
+|   |   |   |   |       tps.xlsx
+|   |   |   |   |       wlf.xlsx
+|   |   |   |   |       wtl.xlsx
+|   |   |   |   |       zh.xlsx
+|   |   |   |   |       
+|   |   |   |   +---wf_windspeed
+|   |   |   |   |       cl.xlsx
+|   |   |   |   |       jlz.xlsx
+|   |   |   |   |       js.xlsx
+|   |   |   |   |       jz.xlsx
+|   |   |   |   |       lhs.xlsx
+|   |   |   |   |       llz.xlsx
+|   |   |   |   |       lym.xlsx
+|   |   |   |   |       tps.xlsx
+|   |   |   |   |       wlf.xlsx
+|   |   |   |   |       wtl.xlsx
+|   |   |   |   |       zh.xlsx
+|   |   |   |   |       
+|   |   |   |   \---光伏
+|   |   |   |       |   光伏.xlsx
+|   |   |   |       |   新能源装机容量.docx
+|   |   |   |       |   
+|   |   |   |       +---三洞湖光伏电站
+|   |   |   |       |       三洞湖温度.xlsx
+|   |   |   |       |       三洞湖短期、超短期功率预测.xlsx
+|   |   |   |       |       三洞湖辐照度.xlsx
+|   |   |   |       |       功率_三洞湖光伏电站_20190101_20191231.xls
+|   |   |   |       |       
+|   |   |   |       +---新阳光伏电站
+|   |   |   |       |       功率_新阳光伏电站_20190101_20191231.xls
+|   |   |   |       |       新阳光伏短期、超短期功率预测.xlsx
+|   |   |   |       |       新阳光伏辐照度.xlsx
+|   |   |   |       |       新阳电站温度.xlsx
+|   |   |   |       |       
+|   |   |   |       +---横溪光伏电站
+|   |   |   |       |       功率_横溪光伏电站_20190101_20191231.xls
+|   |   |   |       |       横溪光伏短期、超短期功率预测.xlsx
+|   |   |   |       |       横溪光伏辐照度.xlsx
+|   |   |   |       |       横溪电站温度.xlsx
+|   |   |   |       |       
+|   |   |   |       +---洲上光伏电站
+|   |   |   |       |       功率_洲上光伏电站_20190101_20191231.xls
+|   |   |   |       |       洲上光伏温度.xlsx
+|   |   |   |       |       洲上光伏短期、超短期功率预测.xlsx
+|   |   |   |       |       洲上光伏辐照度.xlsx
+|   |   |   |       |       
+|   |   |   |       +---湖云光伏电站
+|   |   |   |       |       功率_湖云光伏电站_20190101_20191231.xls
+|   |   |   |       |       湖云光伏温度.xlsx
+|   |   |   |       |       湖云光伏短期、超短期功率预测.xlsx
+|   |   |   |       |       湖云光伏辐照度.xlsx
+|   |   |   |       |       
+|   |   |   |       +---红星光伏电站
+|   |   |   |       |       功率_红星光伏电站_20190101_20191231.xls
+|   |   |   |       |       红星光伏短期、超短期功率预测.xlsx
+|   |   |   |       |       红星光伏辐照度.xlsx
+|   |   |   |       |       红星电站温度.xlsx
+|   |   |   |       |       
+|   |   |   |       +---饶丰光伏电站
+|   |   |   |       |       功率_饶丰光伏电站_20190101_20191231.xls
+|   |   |   |       |       饶丰光伏短期、超短期功率预测.xlsx
+|   |   |   |       |       饶丰光伏辐照度.xlsx
+|   |   |   |       |       饶丰温度.xlsx
+|   |   |   |       |       
+|   |   |   |       +---鸬鹚光伏电站
+|   |   |   |       |       功率_鸬鹚光伏电站_20190101_20191231.xls
+|   |   |   |       |       鸬鹚光伏温度.xlsx
+|   |   |   |       |       鸬鹚光伏短期、超短期功率预测.xlsx
+|   |   |   |       |       鸬鹚光伏辐照度.xlsx
+|   |   |   |       |       
+|   |   |   |       \---龙口光伏电站
+|   |   |   |               功率_龙口光伏电站_20190101_20191231.xls
+|   |   |   |               龙口光伏短期、超短期功率预测.xlsx
+|   |   |   |               龙口光伏辐照度.xlsx
+|   |   |   |               龙口电站温度.xlsx
+|   |   |   |               
+|   |   |   +---浙江丽水
+|   |   |   |   |   wf1NWP数据.csv
+|   |   |   |   |   wf1场站数据.csv
+|   |   |   |   |   wf2NWP数据.csv
+|   |   |   |   |   wf2场站数据.csv
+|   |   |   |   |   全域NWP气压数据.csv
+|   |   |   |   |   全域NWP温度数据.csv
+|   |   |   |   |   全域NWP相对湿度数据.csv
+|   |   |   |   |   全域NWP风向数据.csv
+|   |   |   |   |   全域NWP风速数据.csv
+|   |   |   |   |   
+|   |   |   |   \---丽水
+|   |   |   |           wf1NWP数据.csv
+|   |   |   |           wf1场站数据.csv
+|   |   |   |           wf2NWP数据.csv
+|   |   |   |           wf2场站数据.csv
+|   |   |   |           
+|   |   |   \---金风竞赛
+|   |   |           WF1520.csv
+|   |   |           WF1531.csv
+|   |   |           WF1545.csv
+|   |   |           WF1700.csv
+|   |   |           WF1771.csv
+|   |   |           WF225.csv
+|   |   |           WF342.csv
+|   |   |           WF384.csv
+|   |   |           WF402.csv
+|   |   |           WF410.csv
+|   |   |           WF420.csv
+|   |   |           WF815.csv
+|   |   |           
+|   |   \---dataset_1
+|   |           cl.pkl
+|   |           hx.pkl
+|   |           hy.pkl
+|   |           js.pkl
+|   |           jz.pkl
+|   |           lc.pkl
+|   |           lk.pkl
+|   |           lym.pkl
+|   |           qss.pkl
+|   |           rf.pkl
+|   |           wtl.pkl
+|   |           xy.pkl
+|   |           zh.pkl
+|   |           zs.pkl
+|   |           
+|   +---temp
+|   |   \---cached_data
+|   |           temp_testset_xiaowang_1_0.joblib
+|   |           temp_trainset_xiaowang_1_0.joblib
+|   |           
+|   \---user_data
+|       \---xiaowang
+|           +---download_data
+|           |       temp_testset_xiaowang_1_0.joblib
+|           |       temp_trainset_xiaowang_1_0.joblib
+|           |       
+|           +---test_job_data
+|           |   \---0
+|           |           format_test_dic_xiaowang_1_0.joblib
+|           |           result_cl_xiaowang_1_0.joblib
+|           |           result_js_xiaowang_1_0.joblib
+|           |           result_jz_xiaowang_1_0.joblib
+|           |           result_lym_xiaowang_1_0.joblib
+|           |           result_qss_xiaowang_1_0.joblib
+|           |           result_wtl_xiaowang_1_0.joblib
+|           |           result_zh_xiaowang_1_0.joblib
+|           |           
+|           \---upload_data
+|               |   model_class_cl_xiaowang_1_0.py
+|               |   model_class_hyperparams_xiaowang_1_0.joblib
+|               |   model_class_js_xiaowang_1_0.py
+|               |   model_class_jz_xiaowang_1_0.py
+|               |   model_class_lym_xiaowang_1_0.py
+|               |   model_class_qss_xiaowang_1_0.py
+|               |   model_class_wtl_xiaowang_1_0.py
+|               |   model_class_zh_xiaowang_1_0.py
+|               |   model_para_cl_xiaowang_1_0.pth
+|               |   model_para_js_xiaowang_1_0.pth
+|               |   model_para_jz_xiaowang_1_0.pth
+|               |   model_para_lym_xiaowang_1_0.pth
+|               |   model_para_qss_xiaowang_1_0.pth
+|               |   model_para_wtl_xiaowang_1_0.pth
+|               |   model_para_zh_xiaowang_1_0.pth
+|               |   scaler_cl_xiaowang_1_0.joblib
+|               |   scaler_js_xiaowang_1_0.joblib
+|               |   scaler_jz_xiaowang_1_0.joblib
+|               |   scaler_lym_xiaowang_1_0.joblib
+|               |   scaler_qss_xiaowang_1_0.joblib
+|               |   scaler_wtl_xiaowang_1_0.joblib
+|               |   scaler_zh_xiaowang_1_0.joblib
+|               |   
+|               \---__pycache__
+|                       model_class_cl_xiaowang_1_0.cpython-310.pyc
+|                       model_class_js_xiaowang_1_0.cpython-310.pyc
+|                       model_class_jz_xiaowang_1_0.cpython-310.pyc
+|                       model_class_lym_xiaowang_1_0.cpython-310.pyc
+|                       model_class_qss_xiaowang_1_0.cpython-310.pyc
+|                       model_class_wtl_xiaowang_1_0.cpython-310.pyc
+|                       model_class_zh_xiaowang_1_0.cpython-310.pyc
+|                       
++---interactive_space
+|   \---xiaowang
+|       +---download_data
+|       |       temp_trainset_xiaowang_1_0.joblib
+|       |       
+|       \---upload_data
+|               model_class_cl_xiaowang_1_0.py
+|               model_class_hyperparams_xiaowang_1_0.joblib
+|               model_class_js_xiaowang_1_0.py
+|               model_class_jz_xiaowang_1_0.py
+|               model_class_lym_xiaowang_1_0.py
+|               model_class_qss_xiaowang_1_0.py
+|               model_class_wtl_xiaowang_1_0.py
+|               model_class_zh_xiaowang_1_0.py
+|               model_para_cl_xiaowang_1_0.pth
+|               model_para_js_xiaowang_1_0.pth
+|               model_para_jz_xiaowang_1_0.pth
+|               model_para_lym_xiaowang_1_0.pth
+|               model_para_qss_xiaowang_1_0.pth
+|               model_para_wtl_xiaowang_1_0.pth
+|               model_para_zh_xiaowang_1_0.pth
+|               scaler_cl_xiaowang_1_0.joblib
+|               scaler_js_xiaowang_1_0.joblib
+|               scaler_jz_xiaowang_1_0.joblib
+|               scaler_lym_xiaowang_1_0.joblib
+|               scaler_qss_xiaowang_1_0.joblib
+|               scaler_wtl_xiaowang_1_0.joblib
+|               scaler_zh_xiaowang_1_0.joblib
+|               
++---misc
+|   |   model_class.py
+|   |   model_class_cl_xiaowang_1_0.py
+|   |   model_class_js_xiaowang_1_0.py
+|   |   model_class_jz_xiaowang_1_0.py
+|   |   model_class_lym_xiaowang_1_0.py
+|   |   model_class_qss_xiaowang_1_0.py
+|   |   model_class_wtl_xiaowang_1_0.py
+|   |   model_class_zh_xiaowang_1_0.py
+|   |   批量产生模型类文件.py
+|   |   超参数生成.ipynb
+|   |   
+|   \---log
+|           task_evaluate_20250507_113919.log
+|           task_evaluate_20250507_114148.log
+|           task_evaluate_20250507_153900.log
+|           task_evaluate_20250507_154623.log
+|           task_evaluate_20250507_154657.log
+|           
++---models
++---results
++---scripts
+|       prepare_data.cmd
+|       prepare_data.py
+|       prepare_new_job.py
+|       task_evaluate.cmd
+|       task_evaluate.py
+|       
++---src
+|   +---data_manager
+|   |   |   data_send_src.py
+|   |   |   数据读取与处理notebook.ipynb
+|   |   |   
+|   |   \---__pycache__
+|   |           data_send_src.cpython-310.pyc
+|   |           
+|   +---model_evaluator
+|   |   |   evaluate_src.py
+|   |   |   
+|   |   \---__pycache__
+|   |           evaluate_src.cpython-310.pyc
+|   |           
+|   +---task_manager
+|   |       create_new_job.py
+|   |       
+|   +---untils
+|   |   |   evaluate_function.py
+|   |   |   forecaster_fuction.py
+|   |   |   __init__.py
+|   |   |   
+|   |   \---__pycache__
+|   |           evaluate_function.cpython-310.pyc
+|   |           forecaster_fuction.cpython-310.pyc
+|   |           __init__.cpython-310.pyc
+|   |           
+|   \---user_interface
+|       \---demo_test
+|           \---task1
+|                   model_train.ipynb
+|                   
+\---web_interface
+    |   db.sqlite3
+    |   manage.py
+    |   web_readme.md
+    |   
+    +---mainapp
+    |   |   admin.py
+    |   |   apps.py
+    |   |   models.py
+    |   |   tests.py
+    |   |   urls.py
+    |   |   views.py
+    |   |   __init__.py
+    |   |   
+    |   +---migrations
+    |   |   |   0001_initial.py
+    |   |   |   __init__.py
+    |   |   |   
+    |   |   \---__pycache__
+    |   |           0001_initial.cpython-310.pyc
+    |   |           __init__.cpython-310.pyc
+    |   |           
+    |   +---templates
+    |   |   |   base_generic.html
+    |   |   |   
+    |   |   +---mainapp
+    |   |   |       create_job.html
+    |   |   |       home.html
+    |   |   |       job_detail.html
+    |   |   |       login.html
+    |   |   |       register.html
+    |   |   |       
+    |   |   \---registration
+    |   |           login.html
+    |   |           
+    |   \---__pycache__
+    |           admin.cpython-310.pyc
+    |           apps.cpython-310.pyc
+    |           models.cpython-310.pyc
+    |           urls.cpython-310.pyc
+    |           views.cpython-310.pyc
+    |           __init__.cpython-310.pyc
+    |           
+    \---web_interface
+        |   asgi.py
+        |   settings.py
+        |   urls.py
+        |   wsgi.py
+        |   __init__.py
+        |   
+        \---__pycache__
+                settings.cpython-310.pyc
+                urls.cpython-310.pyc
+                wsgi.cpython-310.pyc
+                __init__.cpython-310.pyc
+                

@@ -124,7 +124,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # 登录、登出后的跳转页面
 LOGIN_REDIRECT_URL = '/'  # 登录后跳转到首页
-LOGOUT_REDIRECT_URL = '/'  # 登出后跳转到首页
+LOGOUT_REDIRECT_URL = '/login/'  # 登出后跳转到首页
 
 # 默认的登录页
 LOGIN_URL = '/login/'  # 如果用户未登录，重定向到登录页

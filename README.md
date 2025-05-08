@@ -103,3 +103,6 @@ upload_data中的用job_id定位的文件，用户确认上传后服务器启动
 
 
 
+## 草稿
+
+tree /f /a > project_structure.txt

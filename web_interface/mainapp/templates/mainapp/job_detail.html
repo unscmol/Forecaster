@@ -1,0 +1,12 @@
+<!-- job_detail.html -->
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>Job Details</h2>
+  <p><strong>Job ID:</strong> {{ job.job_id }}</p>
+  <p><strong>Task Type:</strong> {{ job.task_type }}</p>
+  <p><strong>Status:</strong> {{ job.status }}</p>
+  <p><strong>Created At:</strong> {{ job.created_at }}</p>
+
+  <a href="{% url 'home' %}">Back to Home</a>
+{% endblock %}
