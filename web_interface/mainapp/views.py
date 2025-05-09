@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 import subprocess
 from django.contrib.auth.forms import UserCreationForm
 from django.conf import settings
-
+import ast  # 新增导入
 
 main_path = 'C:\\Users\ZY\Desktop\Forecaster'
 
@@ -100,6 +100,10 @@ def create_job(request):
         # 保存参数字典为 JSON 文件
         with open(job_params_path, 'w') as json_file:
             json.dump(job_params, json_file, indent=4)
+
+        # 运行 prepare_data.py，传递配置文件路径
+        cmd = f"python {os.path.join(main_path, 'scripts', 'prepare_data.py')} {job_params_path}"
+        subprocess.Popen(cmd, shell=True)
 
         # 重定向到作业详情页
         return redirect('job_detail', job_id=job_id)  # 跳转到作业详情页

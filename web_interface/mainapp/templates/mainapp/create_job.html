@@ -1,17 +1,118 @@
-<!-- create_job.html -->
 {% extends 'base_generic.html' %}
 
 {% block content %}
-  <h2>Create a New Job</h2>
-  <form method="POST">
-    {% csrf_token %}
-    <label for="task_type">Task Type:</label>
-    <select name="task_type" id="task_type">
-      <option value="1">Task Type 1</option>
-      <option value="2">Task Type 2</option>
-      <!-- 这里可以根据需要添加更多任务类型 -->
-    </select><br><br>
+  <div class="container">
+    <div class="create-job-form">
+      <h2>创建新任务</h2>
+      <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="task_type">任务类型:</label>
+          <select name="task_type" id="task_type">
+            <option value="1">任务类型 1</option>
+            <option value="2">任务类型 2</option>
+          </select>
+        </div>
 
-    <button type="submit">Create Job</button>
-  </form>
+        <div class="form-group">
+          <label for="extra_params">额外参数 (Python dict 格式):</label>
+          <textarea name="extra_params" id="extra_params" rows="5" cols="60">{}</textarea>
+        </div>
+
+        <button type="submit" class="btn-primary">创建任务</button>
+      </form>
+
+      <!-- ✅ 居中的返回主页按钮 -->
+      <div class="centered-button">
+        <a href="{% url 'home' %}" class="btn-secondary">返回主页</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block style %}
+  <style>
+    body {
+      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    .create-job-form {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .create-job-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    select, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .btn-secondary {
+      margin-top: 10px;
+      background-color: #6c757d;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    .btn-secondary:hover {
+      background-color: #5a6268;
+    }
+
+    .centered-button {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .centered-button a {
+      width: 200px;
+    }
+  </style>
 {% endblock %}

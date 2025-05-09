@@ -67,8 +67,6 @@ class Task_Evaluator:
             # 加载模型参数
             model_dic[station_id].load_state_dict(pth_dic[station_id])
 
-
-
         # 3. 测试主流程
         # 3.1 读入数据并处理成batchsize为1
         for station_id in name_ls:
