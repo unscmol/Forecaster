@@ -1,2 +1,10 @@
 data/
 interactive_space/
+results/
+
+*.joblib
+*.pkl
+*.xls
+*.csv
+*.xlsx
+*.pth

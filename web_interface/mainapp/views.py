@@ -17,14 +17,16 @@ main_path = 'C:\\Users\ZY\Desktop\Forecaster'
 
 def register(request):
     if request.method == 'POST':
-        # 使用 Django 内置的 UserCreationForm 来处理注册
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()  # 保存用户
-            return redirect('login')  # 注册成功后跳转到登录页面
+            user = form.save()  # 保存用户
+            create_user_dirs(user.username, main_path)  # 注册成功后创建目录
+            return redirect('login')
     else:
-        form = UserCreationForm()  # GET 请求时创建一个空表单
+        form = UserCreationForm()
     return render(request, 'mainapp/register.html', {'form': form})
+
+
 
 def user_login(request):
     if request.method == 'POST':
@@ -118,3 +120,22 @@ def job_detail(request, job_id):
 def user_logout(request):
     logout(request)  # 登出操作
     return redirect('login')  # 登出后重定向到登录页面
+
+
+
+
+'''
+辅助函数
+'''
+
+def create_user_dirs(username, main_path):
+    # 创建 data/user_data/username 目录结构
+    data_user_path = os.path.join(main_path, 'data', 'user_data', username)
+    os.makedirs(os.path.join(data_user_path, 'download_data'), exist_ok=True)
+    os.makedirs(os.path.join(data_user_path, 'test_job_data'), exist_ok=True)
+    os.makedirs(os.path.join(data_user_path, 'upload_data'), exist_ok=True)
+
+    # 创建 interactive_space/username 目录结构
+    inter_user_path = os.path.join(main_path, 'interactive_space', username)
+    os.makedirs(os.path.join(inter_user_path, 'download_data'), exist_ok=True)
+    os.makedirs(os.path.join(inter_user_path, 'upload_data'), exist_ok=True)
