@@ -11,3 +11,12 @@ class Job(models.Model):
 
     def __str__(self):
         return f"Job {self.job_id} - {self.task_type} - {self.status}"
+
+
+class UserRanking(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    task_type = models.CharField(max_length=255)
+    best_score = models.FloatField(default=0.0)
+
+    class Meta:
+        unique_together = ('user', 'task_type')

@@ -1,0 +1,12 @@
+[2025-05-11 22:29:35.752528] 开始评估任务 user_id=unscmol, job_id=17
+使用参数文件: C:\Users\ZY\Desktop\Forecaster\config\job_config\job_params_unscmol_17.json
+The accuracy of station cl is 91.3184754550457%
+The accuracy of station js is 91.30519926548004%
+The accuracy of station jz is 90.34764543175697%
+The accuracy of station lym is 91.07851758599281%
+The accuracy of station qss is 90.55769145488739%
+The accuracy of station wtl is 89.66094627976418%
+The accuracy of station zh is 91.49910807609558%
+[2025-05-11 22:29:35.769528] 评估完成 ✅
+Rank Score is 90.82394050700324
+[2025-05-11 22:29:35.779529] 排行榜已更新 ✅

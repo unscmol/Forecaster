@@ -1,11 +1,20 @@
 {% extends 'base_generic.html' %}
 
 {% block content %}
+  <!-- 固定右上角登出按钮 -->
+  <div class="fixed-logout">
+    <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+  </div>
+
   <div class="container">
+    <!-- 左侧欢迎与作业表格 -->
     <div class="welcome-section">
       <h2>Welcome, {{ user.username }}!</h2>
 
-      <a href="{% url 'logout' %}" class="logout-btn">Logout</a>  <!-- 添加登出按钮 -->
+      <div class="top-buttons">
+        <a href="{% url 'cloud_disk' user.username %}" class="cloud-btn">我的云盘</a>
+        <a href="{% url 'create_job' %}" class="create-job-btn">创建新任务</a>
+      </div>
 
       <h3>Your Jobs</h3>
       <table>
@@ -32,8 +41,34 @@
           {% endfor %}
         </tbody>
       </table>
+    </div>
 
-      <a href="{% url 'create_job' %}" class="create-job-btn">Create New Job</a>
+    <!-- 右侧排行榜 -->
+    <div class="ranking-section">
+      <h3>排行榜</h3>
+      <form method="get" action=".">
+        <label for="task_type">任务类型：</label>
+        <select name="task_type" onchange="this.form.submit()">
+          <option value="1" {% if task_type == '1' %}selected{% endif %}>任务类型 1</option>
+          <option value="2" {% if task_type == '2' %}selected{% endif %}>任务类型 2</option>
+        </select>
+      </form>
+
+      <table class="ranking-table">
+        <thead>
+          <tr><th>用户</th><th>得分</th></tr>
+        </thead>
+        <tbody>
+          {% for entry in rankings %}
+          <tr>
+            <td>{{ entry.user.username }}</td>
+            <td>{{ entry.best_score|floatformat:2 }}</td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="2">暂无数据</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
   </div>
 {% endblock %}
@@ -43,28 +78,14 @@
     body {
       background-color: #f5f5f5;
       font-family: Arial, sans-serif;
+      margin: 0;
     }
 
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .welcome-section {
-      background-color: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 800px;
-    }
-
-    .welcome-section h2 {
-      margin-bottom: 20px;
+    .fixed-logout {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      z-index: 100;
     }
 
     .logout-btn {
@@ -75,12 +96,66 @@
       border-radius: 4px;
       text-decoration: none;
       font-weight: bold;
-      margin-top: 10px;
-      display: inline-block;
     }
 
     .logout-btn:hover {
       background-color: #e03e3e;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      gap: 20px;
+      height: calc(100vh - 80px);
+      padding: 60px 40px 40px 40px;
+      overflow: hidden;
+    }
+
+    .welcome-section,
+    .ranking-section {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+      max-height: 100%;
+    }
+
+    .welcome-section {
+      width: 65%;
+    }
+
+    .ranking-section {
+      width: 30%;
+    }
+
+    .top-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .cloud-btn, .create-job-btn {
+      display: inline-block;
+      background-color: #28a745;
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    .cloud-btn:hover, .create-job-btn:hover {
+      background-color: #218838;
+    }
+
+    .create-job-btn {
+      background-color: #007bff;
+    }
+
+    .create-job-btn:hover {
+      background-color: #0056b3;
     }
 
     table {
@@ -89,9 +164,9 @@
       border-collapse: collapse;
     }
 
-    table th, table td {
-      border: 1px solid #ddd;
+    th, td {
       padding: 10px;
+      border: 1px solid #ddd;
       text-align: left;
     }
 
@@ -104,19 +179,20 @@
       background-color: #f9f9f9;
     }
 
-    .create-job-btn {
-      display: inline-block;
-      background-color: #007bff;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
+    .ranking-section select {
+      width: 100%;
+      padding: 6px;
+      margin-bottom: 10px;
       border-radius: 4px;
-      margin-top: 20px;
-      font-weight: bold;
+      border: 1px solid #ccc;
     }
 
-    .create-job-btn:hover {
-      background-color: #0056b3;
+    .ranking-table th {
+      background-color: #6c757d;
+    }
+
+    .ranking-table td {
+      text-align: center;
     }
   </style>
 {% endblock %}

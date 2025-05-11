@@ -10,6 +10,21 @@
       <p><strong>创建时间:</strong> {{ job.created_at }}</p>
 
       <a href="{% url 'home' %}" class="btn-primary">返回主页</a>
+
+      <!-- 三个操作按钮横向排列 -->
+      <div class="action-buttons">
+        <form method="POST" action="{% url 'submit_evaluation' job_id=job.job_id %}" style="display:inline;">
+          {% csrf_token %}
+          <button type="submit" class="btn-evaluate">提交评估</button>
+        </form>
+
+        <a href="{% url 'cloud_disk' job.user.username %}" class="btn-evaluate">访问云盘</a>
+
+        <form method="POST" action="{% url 'finish_job' job_id=job.job_id %}" style="display:inline;" onsubmit="return confirm('确认结束该作业吗？');">
+          {% csrf_token %}
+          <button type="submit" class="btn-end">结束作业</button>
+        </form>
+      </div>
     </div>
   </div>
 {% endblock %}
@@ -64,6 +79,43 @@
 
     .btn-primary:hover {
       background-color: #0056b3;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      gap: 10px;
+    }
+
+    .action-buttons .btn-evaluate,
+    .action-buttons .btn-end {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      color: white;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .btn-evaluate {
+      background-color: #28a745;
+    }
+
+    .btn-evaluate:hover {
+      background-color: #218838;
+    }
+
+    .btn-end {
+      background-color: #dc3545;
+    }
+
+    .btn-end:hover {
+      background-color: #c82333;
     }
   </style>
 {% endblock %}

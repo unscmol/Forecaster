@@ -1,0 +1,19 @@
+[2025-05-11 13:48:25.686091] 开始准备数据 user_id=xiaowang, job_id=13
+使用参数文件: C:\Users\ZY\Desktop\Forecaster\config\job_config\job_params_xiaowang_13.json
+场站 cl: 训练集大小 = 28032, 测试集大小 = 7008
+场站 js: 训练集大小 = 28032, 测试集大小 = 7008
+场站 jz: 训练集大小 = 28032, 测试集大小 = 7008
+场站 lym: 训练集大小 = 28032, 测试集大小 = 7008
+场站 qss: 训练集大小 = 28032, 测试集大小 = 7008
+场站 wtl: 训练集大小 = 28032, 测试集大小 = 7008
+场站 zh: 训练集大小 = 28032, 测试集大小 = 7008
+Moved: temp_testset_xiaowang_1_0.joblib
+Moved: temp_testset_xiaowang_1_11.joblib
+Moved: temp_testset_xiaowang_1_12.joblib
+Moved: temp_testset_xiaowang_1_13.joblib
+Moved: temp_trainset_xiaowang_1_0.joblib
+Moved: temp_trainset_xiaowang_1_11.joblib
+Moved: temp_trainset_xiaowang_1_12.joblib
+Moved: temp_trainset_xiaowang_1_13.joblib
+Success saving test data in user_data folder!
+[2025-05-11 13:48:26.022091] 数据准备完成 ✅

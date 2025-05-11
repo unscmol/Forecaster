@@ -38,34 +38,18 @@ class Generate_cached_data:
         # 1. 从数据库中获取数据并处理为临时的训练集和测试集保存在临时路径下
         data_dic = joblib.load(self.total_data_path)
         train_data_dic, test_data_dic = split_train_test_data_by_time(data_dic=data_dic, train_ratio=0.8)
-        # 临时数据储存，job完成后销毁
-        joblib.dump(train_data_dic, '../data/temp/cached_data/temp_trainset_{}_{}_{}.joblib'.format(self.user_id, self.task_id, self.job_number))
-        joblib.dump(test_data_dic, '../data/temp/cached_data/temp_testset_{}_{}_{}.joblib'.format(self.user_id, self.task_id, self.job_number))
+        # 储存任务所需数据
+        joblib.dump(train_data_dic, '../data/user_data/{}/download_data/temp_trainset_{}_{}_{}.joblib'.format(self.user_id, self.user_id, self.task_id, self.job_number))
+        joblib.dump(train_data_dic,
+                    '../interactive_space/{}/download_data/temp_trainset_{}_{}_{}.joblib'.format(self.user_id,
+                                                                                              self.user_id,
+                                                                                              self.task_id,
+                                                                                              self.job_number))
+        joblib.dump(test_data_dic, '../data/user_data/{}/download_data/temp_testset_{}_{}_{}.joblib'.format(self.user_id, self.user_id, self.task_id, self.job_number))
 
-        # 2. 数据分发储存
-        source_folder = "../data/temp/cached_data"
-        target_folder_1 = "../interactive_space/{}/download_data".format(self.user_id) # 用户可访问的数据路径
-        target_folder_2 = "../data/user_data/{}/download_data".format(self.user_id) # 系统留档的数据路径
-        # 用户文件夹下不能放入测试数据
-        for file_name in os.listdir(source_folder):
-            if file_name.endswith('.joblib') and (str(self.job_number) and 'train') in file_name:
-                # 构造完整的源文件路径和目标文件路径
-                source_file = os.path.join(source_folder, file_name)
-                target_file_1 = os.path.join(target_folder_1, file_name)
-                target_file_2 = os.path.join(target_folder_2, file_name)
-                # 移动文件
-                shutil.copy(source_file, target_file_1)
-                shutil.copy(source_file, target_file_2)
-                print(f"Moved: {file_name}")
-            if file_name.endswith('.joblib') and (str(self.job_number) and 'test') in file_name:  #
-                # 构造完整的源文件路径和目标文件路径
-                source_file = os.path.join(source_folder, file_name)
-                target_file_2 = os.path.join(target_folder_2, file_name)
-                # 移动文件
-                shutil.copy(source_file, target_file_2)
-                print(f"Moved: {file_name}")
 
-        # 3. 数测试数据的处理（如果是要统一测试集形状格式的可以添加代码）
+        # 2. 数测试数据的处理（如果是要统一测试集形状格式的可以添加代码）
+        '''目前temp_testset_{}_{}_{}.joblib只是做个备份，需要自定义评估代码的用户才需要调用到这个文件，不然都是在下面写好固定测试集的形状，统一测试的'''
         def create_data(data_n, inp_len, out_len, step_len): # 可以嵌套函数，方便内部调用
             inp_data, dec_inp, out_data = [], [], []
             for i in range(0, data_n.shape[0] - inp_len - out_len, step_len):  # 没有缺失值

@@ -1,0 +1,96 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="ranking-card">
+    <h2>排行榜 - 任务类型 {{ task_type }}</h2>
+
+    <form method="get">
+      <label for="task_type">选择任务类型：</label>
+      <select name="task_type" id="task_type" onchange="this.form.submit()">
+        <option value="1" {% if task_type == '1' %}selected{% endif %}>任务类型 1</option>
+        <option value="2" {% if task_type == '2' %}selected{% endif %}>任务类型 2</option>
+      </select>
+    </form>
+
+    <table>
+      <thead>
+        <tr><th>用户名</th><th>最高得分</th></tr>
+      </thead>
+      <tbody>
+        {% for entry in rankings %}
+        <tr>
+          <td>{{ entry.user.username }}</td>
+          <td>{{ entry.best_score|floatformat:2 }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="2">暂无排名记录</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <a href="{% url 'home' %}" class="btn-primary">返回主页</a>
+  </div>
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+  .container {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+  }
+
+  .ranking-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 600px;
+  }
+
+  table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+
+  th {
+    background-color: #007bff;
+    color: white;
+  }
+
+  td {
+    background-color: #f9f9f9;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+  select {
+    padding: 6px;
+    margin-top: 10px;
+    width: 100%;
+  }
+</style>
+{% endblock %}

@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import joblib
 import importlib.util
 
+
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from sklearn.metrics import mean_squared_error
 import torch
@@ -16,10 +17,14 @@ import torch.nn.functional as F
 import torch.optim.lr_scheduler as lr_scheduler
 from torch.optim import Adam
 from torch.utils.data import TensorDataset, DataLoader, Dataset
-#引入自定义函数
-sys.path.append("../data/untils")
-from evaluate_function import acc_cal
 
+# 计算项目根路径 Forecaster目录下
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
+
+# 将自定义模块路径添加到系统路径中
+sys.path.append(os.path.join(project_root, 'data', 'untils'))
+from evaluate_function import acc_cal
+# 启用GPU
 GPU_switch = True
 device = torch.device("cuda" if (torch.cuda.is_available() and GPU_switch) else "cpu")
 
@@ -33,29 +38,46 @@ class Task_Evaluator:
         self.user_id = user_id
         self.task_id = task_id
         self.job_number = job_number
-
         self.para = job_params
+        self.project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
 
     '''Task1评估主函数'''
     def eva_task1(self): # 注意任务数据准备函数的相对路径是以脚本.cmd为准的；不要在任务流函数中添加参数!可以在job_params添加需要的额外参数；
-
         # 1. 加载固定的测试数据并处理
         # 读入测试数据
-        test_dic = joblib.load('../data/user_data/{}/test_job_data/{}/format_test_dic_{}_{}_{}.joblib'.format(self.user_id, self.job_number, self.user_id, self.task_id, self.job_number))
+        # 构建基础路径
+        data_dir = os.path.join(self.project_root, 'data')
+        test_dic = joblib.load(
+            os.path.join(data_dir, 'user_data', str(self.user_id), 'test_job_data', str(self.job_number),
+                         'format_test_dic_{}_{}_{}.joblib'.format(self.user_id, self.task_id, self.job_number))
+        )
         # 读入模型超参数字典
-        model_class_hyperparams = joblib.load('../data/user_data/{}/upload_data/model_class_hyperparams_{}_{}_{}.joblib'.format(self.user_id, self.user_id, self.task_id, self.job_number))
+        model_class_hyperparams = joblib.load(
+            os.path.join(data_dir, 'user_data', str(self.user_id), 'upload_data',
+                         'model_class_hyperparams_{}_{}_{}.joblib'.format(self.user_id, self.task_id, self.job_number))
+        )
         name_ls = list(test_dic.keys())
         pth_dic, scaler_dic, model_dic = {}, {}, {}
         for station_id in name_ls:
             # 读入对应场站模型参数
-            pth_dic[station_id] = torch.load('../data/user_data/{}/upload_data/model_para_{}_{}_{}_{}.pth'.format(self.user_id, station_id, self.user_id, self.task_id, self.job_number))
+            pth_path = os.path.join(
+                data_dir, 'user_data', str(self.user_id), 'upload_data',
+                'model_para_{}_{}_{}_{}.pth'.format(station_id, self.user_id, self.task_id, self.job_number)
+            )
+            pth_dic[station_id] = torch.load(pth_path)
             # 读入对应场站归一化参数
-            scaler_dic[station_id] = joblib.load('../data/user_data/{}/upload_data/scaler_{}_{}_{}_{}.joblib'.format(self.user_id, station_id, self.user_id, self.task_id, self.job_number))
+            scaler_path = os.path.join(
+                data_dir, 'user_data', str(self.user_id), 'upload_data',
+                'scaler_{}_{}_{}_{}.joblib'.format(station_id, self.user_id, self.task_id, self.job_number)
+            )
+            scaler_dic[station_id] = joblib.load(scaler_path)
 
-            # 动态导入模型类文件
-            model_file_path = '../data/user_data/{}/upload_data/model_class_{}_{}_{}_{}.py'.format(self.user_id,station_id,self.user_id,self.task_id,self.job_number)
+            # 构造模型文件的绝对路径
+            model_file_path = os.path.join(self.project_root, 'data', 'user_data', self.user_id, 'upload_data',
+                                           f'model_class_{station_id}_{self.user_id}_{self.task_id}_{self.job_number}.py')
+
             model_hyperpara = model_class_hyperparams[station_id] # 读入实例化的超参数
-            # 获取模型文件的绝对路径
+            # 获取模型文件路径
             spec = importlib.util.spec_from_file_location("User_Model_{}".format(station_id), model_file_path)
             module = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(module)
@@ -98,7 +120,12 @@ class Task_Evaluator:
 
             true = np.concatenate(true_data, axis=0)
             pre = np.concatenate(pre_data, axis=0)
-            joblib.dump([true, pre], '../data/user_data/{}/test_job_data/{}/result_{}_{}_{}_{}.joblib'.format(self.user_id, self.job_number, station_id, self.user_id, self.task_id, self.job_number))
+
+            result_path = os.path.join(
+                data_dir, 'user_data', str(self.user_id), 'test_job_data', str(self.job_number),
+                'result_{}_{}_{}_{}.joblib'.format(station_id, self.user_id, self.task_id, self.job_number)
+            )
+            joblib.dump([true, pre], result_path)
 
             acc = acc_cal(true, pre, scaler_max)
             print('The accuracy of station {} is {}%'.format(station_id, acc))
@@ -116,3 +143,16 @@ class Task_Evaluator:
             return task_mapping[task_id]()
         else:
             raise ValueError(f"不支持的任务类型: task_id = {task_id}")
+
+    def get_files(self):
+        upload_dir = os.path.join(self.project_root, 'interactive_space', str(self.user_id), 'upload_data')
+        userdata_dir = os.path.join(self.project_root, 'data', 'user_data', str(self.user_id), 'upload_data')
+
+        for filename in os.listdir(upload_dir):
+            # 仅复制以 _{job_number} 结尾的文件（不含扩展名部分）
+            if filename.rstrip().rsplit('.', 1)[0].endswith(f"_{self.job_number}"):
+                src_path = os.path.join(upload_dir, filename)
+                dst_path = os.path.join(userdata_dir, filename)
+                if os.path.isfile(src_path):
+                    shutil.move(src_path, dst_path)
+                    print(f"文件已移动: {src_path} -> {dst_path}")

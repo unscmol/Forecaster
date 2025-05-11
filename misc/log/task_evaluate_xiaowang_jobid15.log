@@ -1,0 +1,16 @@
+[2025-05-11 18:28:06.051378] 开始评估任务 user_id=xiaowang, job_id=15
+使用参数文件: C:\Users\ZY\Desktop\Forecaster\config\job_config\job_params_xiaowang_15.json
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\scaler_zh_xiaowang_1_15.joblib -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\scaler_zh_xiaowang_1_15.joblib
+成功移动用户上传的文件！下面执行评估进程
+[2025-05-11 18:28:06.060379] 评估失败 ❌: [Errno 2] No such file or directory: 'C:\\Users\\ZY\\Desktop\\Forecaster\\data\\user_data\\xiaowang\\upload_data\\model_class_hyperparams_xiaowang_1_15.joblib'
+详细错误信息如下：
+Traceback (most recent call last):
+  File "C:\Users\ZY\Desktop\Forecaster\scripts\task_evaluate.py", line 56, in <module>
+    Evaluate_Task.execute_eva() # 执行评估主函数
+  File "C:\Users\ZY\Desktop\Forecaster\web_interface\..\src\model_evaluator\evaluate_src.py", line 143, in execute_eva
+    return task_mapping[task_id]()
+  File "C:\Users\ZY\Desktop\Forecaster\web_interface\..\src\model_evaluator\evaluate_src.py", line 55, in eva_task1
+    model_class_hyperparams = joblib.load(
+  File "C:\ProgramData\Anaconda3\envs\pytorch_gpu\lib\site-packages\joblib\numpy_pickle.py", line 650, in load
+    with open(filename, 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZY\\Desktop\\Forecaster\\data\\user_data\\xiaowang\\upload_data\\model_class_hyperparams_xiaowang_1_15.joblib'

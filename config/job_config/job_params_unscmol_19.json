@@ -1,0 +1,10 @@
+{
+    "total_data_path": "../data/processed/archive_data/dataset_1/total_data_dic.joblib",
+    "user_id": "unscmol",
+    "task_id": 1,
+    "job_number": 19,
+    "inp_len": 16,
+    "out_len": 16,
+    "step_len": 1,
+    "Custom_evaluation": 0
+}

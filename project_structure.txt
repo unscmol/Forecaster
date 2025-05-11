@@ -23,8 +23,20 @@ C:.
 +---config
 |   +---job_config
 |   |       job_params.json
+|   |       job_params_unscmol_6.json
+|   |       job_params_unscmol_7.json
+|   |       job_params_unscmol_8.json
+|   |       job_params_wkb_9.json
+|   |       job_params_xiaowang_10.json
+|   |       job_params_xiaowang_11.json
+|   |       job_params_xiaowang_12.json
+|   |       job_params_xiaowang_13.json
+|   |       job_params_xiaowang_14.json
 |   |       
 |   \---system_config
+|       \---task_default_config
+|               task1.json
+|               
 +---data
 |   +---processed
 |   |   +---archive_data
@@ -702,132 +714,145 @@ C:.
 |   +---temp
 |   |   \---cached_data
 |   |           temp_testset_xiaowang_1_0.joblib
+|   |           temp_testset_xiaowang_1_11.joblib
+|   |           temp_testset_xiaowang_1_12.joblib
+|   |           temp_testset_xiaowang_1_13.joblib
 |   |           temp_trainset_xiaowang_1_0.joblib
+|   |           temp_trainset_xiaowang_1_11.joblib
+|   |           temp_trainset_xiaowang_1_12.joblib
+|   |           temp_trainset_xiaowang_1_13.joblib
 |   |           
 |   \---user_data
 |       \---xiaowang
 |           +---download_data
-|           |       temp_testset_xiaowang_1_0.joblib
-|           |       temp_trainset_xiaowang_1_0.joblib
+|           |       temp_testset_xiaowang_1_14.joblib
+|           |       temp_trainset_xiaowang_1_14.joblib
 |           |       
 |           +---test_job_data
-|           |   \---0
-|           |           format_test_dic_xiaowang_1_0.joblib
-|           |           result_cl_xiaowang_1_0.joblib
-|           |           result_js_xiaowang_1_0.joblib
-|           |           result_jz_xiaowang_1_0.joblib
-|           |           result_lym_xiaowang_1_0.joblib
-|           |           result_qss_xiaowang_1_0.joblib
-|           |           result_wtl_xiaowang_1_0.joblib
-|           |           result_zh_xiaowang_1_0.joblib
+|           |   \---14
+|           |           format_test_dic_xiaowang_1_14.joblib
+|           |           result_cl_xiaowang_1_14.joblib
+|           |           result_js_xiaowang_1_14.joblib
+|           |           result_jz_xiaowang_1_14.joblib
+|           |           result_lym_xiaowang_1_14.joblib
+|           |           result_qss_xiaowang_1_14.joblib
+|           |           result_wtl_xiaowang_1_14.joblib
+|           |           result_zh_xiaowang_1_14.joblib
 |           |           
 |           \---upload_data
-|               |   model_class_cl_xiaowang_1_0.py
-|               |   model_class_hyperparams_xiaowang_1_0.joblib
-|               |   model_class_js_xiaowang_1_0.py
-|               |   model_class_jz_xiaowang_1_0.py
-|               |   model_class_lym_xiaowang_1_0.py
-|               |   model_class_qss_xiaowang_1_0.py
-|               |   model_class_wtl_xiaowang_1_0.py
-|               |   model_class_zh_xiaowang_1_0.py
-|               |   model_para_cl_xiaowang_1_0.pth
-|               |   model_para_js_xiaowang_1_0.pth
-|               |   model_para_jz_xiaowang_1_0.pth
-|               |   model_para_lym_xiaowang_1_0.pth
-|               |   model_para_qss_xiaowang_1_0.pth
-|               |   model_para_wtl_xiaowang_1_0.pth
-|               |   model_para_zh_xiaowang_1_0.pth
-|               |   scaler_cl_xiaowang_1_0.joblib
-|               |   scaler_js_xiaowang_1_0.joblib
-|               |   scaler_jz_xiaowang_1_0.joblib
-|               |   scaler_lym_xiaowang_1_0.joblib
-|               |   scaler_qss_xiaowang_1_0.joblib
-|               |   scaler_wtl_xiaowang_1_0.joblib
-|               |   scaler_zh_xiaowang_1_0.joblib
+|               |   model_class_cl_xiaowang_1_14.py
+|               |   model_class_hyperparams_xiaowang_1_14.joblib
+|               |   model_class_js_xiaowang_1_14.py
+|               |   model_class_jz_xiaowang_1_14.py
+|               |   model_class_lym_xiaowang_1_14.py
+|               |   model_class_qss_xiaowang_1_14.py
+|               |   model_class_wtl_xiaowang_1_14.py
+|               |   model_class_zh_xiaowang_1_14.py
+|               |   model_para_cl_xiaowang_1_14.pth
+|               |   model_para_js_xiaowang_1_14.pth
+|               |   model_para_jz_xiaowang_1_14.pth
+|               |   model_para_lym_xiaowang_1_14.pth
+|               |   model_para_qss_xiaowang_1_14.pth
+|               |   model_para_wtl_xiaowang_1_14.pth
+|               |   model_para_zh_xiaowang_1_14.pth
+|               |   scaler_cl_xiaowang_1_14.joblib
+|               |   scaler_js_xiaowang_1_14.joblib
+|               |   scaler_jz_xiaowang_1_14.joblib
+|               |   scaler_lym_xiaowang_1_14.joblib
+|               |   scaler_qss_xiaowang_1_14.joblib
+|               |   scaler_wtl_xiaowang_1_14.joblib
+|               |   scaler_zh_xiaowang_1_14.joblib
 |               |   
 |               \---__pycache__
-|                       model_class_cl_xiaowang_1_0.cpython-310.pyc
-|                       model_class_js_xiaowang_1_0.cpython-310.pyc
-|                       model_class_jz_xiaowang_1_0.cpython-310.pyc
-|                       model_class_lym_xiaowang_1_0.cpython-310.pyc
-|                       model_class_qss_xiaowang_1_0.cpython-310.pyc
-|                       model_class_wtl_xiaowang_1_0.cpython-310.pyc
-|                       model_class_zh_xiaowang_1_0.cpython-310.pyc
+|                       model_class_cl_xiaowang_1_14.cpython-310.pyc
+|                       model_class_js_xiaowang_1_14.cpython-310.pyc
+|                       model_class_jz_xiaowang_1_14.cpython-310.pyc
+|                       model_class_lym_xiaowang_1_14.cpython-310.pyc
+|                       model_class_qss_xiaowang_1_14.cpython-310.pyc
+|                       model_class_wtl_xiaowang_1_14.cpython-310.pyc
+|                       model_class_zh_xiaowang_1_14.cpython-310.pyc
 |                       
 +---interactive_space
 |   \---xiaowang
 |       +---download_data
-|       |       temp_trainset_xiaowang_1_0.joblib
+|       |       temp_trainset_xiaowang_1_14.joblib
 |       |       
 |       \---upload_data
-|               model_class_cl_xiaowang_1_0.py
-|               model_class_hyperparams_xiaowang_1_0.joblib
-|               model_class_js_xiaowang_1_0.py
-|               model_class_jz_xiaowang_1_0.py
-|               model_class_lym_xiaowang_1_0.py
-|               model_class_qss_xiaowang_1_0.py
-|               model_class_wtl_xiaowang_1_0.py
-|               model_class_zh_xiaowang_1_0.py
-|               model_para_cl_xiaowang_1_0.pth
-|               model_para_js_xiaowang_1_0.pth
-|               model_para_jz_xiaowang_1_0.pth
-|               model_para_lym_xiaowang_1_0.pth
-|               model_para_qss_xiaowang_1_0.pth
-|               model_para_wtl_xiaowang_1_0.pth
-|               model_para_zh_xiaowang_1_0.pth
-|               scaler_cl_xiaowang_1_0.joblib
-|               scaler_js_xiaowang_1_0.joblib
-|               scaler_jz_xiaowang_1_0.joblib
-|               scaler_lym_xiaowang_1_0.joblib
-|               scaler_qss_xiaowang_1_0.joblib
-|               scaler_wtl_xiaowang_1_0.joblib
-|               scaler_zh_xiaowang_1_0.joblib
+|               model_class_cl_xiaowang_1_14.py
+|               model_class_hyperparams_xiaowang_1_14.joblib
+|               model_class_js_xiaowang_1_14.py
+|               model_class_jz_xiaowang_1_14.py
+|               model_class_lym_xiaowang_1_14.py
+|               model_class_qss_xiaowang_1_14.py
+|               model_class_wtl_xiaowang_1_14.py
+|               model_class_zh_xiaowang_1_14.py
+|               model_para_cl_xiaowang_1_14.pth
+|               model_para_js_xiaowang_1_14.pth
+|               model_para_jz_xiaowang_1_14.pth
+|               model_para_lym_xiaowang_1_14.pth
+|               model_para_qss_xiaowang_1_14.pth
+|               model_para_wtl_xiaowang_1_14.pth
+|               model_para_zh_xiaowang_1_14.pth
+|               scaler_cl_xiaowang_1_14.joblib
+|               scaler_js_xiaowang_1_14.joblib
+|               scaler_jz_xiaowang_1_14.joblib
+|               scaler_lym_xiaowang_1_14.joblib
+|               scaler_qss_xiaowang_1_14.joblib
+|               scaler_wtl_xiaowang_1_14.joblib
+|               scaler_zh_xiaowang_1_14.joblib
 |               
 +---misc
 |   |   model_class.py
 |   |   model_class_cl_xiaowang_1_0.py
+|   |   model_class_cl_xiaowang_1_14.py
 |   |   model_class_js_xiaowang_1_0.py
+|   |   model_class_js_xiaowang_1_14.py
 |   |   model_class_jz_xiaowang_1_0.py
+|   |   model_class_jz_xiaowang_1_14.py
 |   |   model_class_lym_xiaowang_1_0.py
+|   |   model_class_lym_xiaowang_1_14.py
 |   |   model_class_qss_xiaowang_1_0.py
+|   |   model_class_qss_xiaowang_1_14.py
 |   |   model_class_wtl_xiaowang_1_0.py
+|   |   model_class_wtl_xiaowang_1_14.py
 |   |   model_class_zh_xiaowang_1_0.py
+|   |   model_class_zh_xiaowang_1_14.py
 |   |   批量产生模型类文件.py
 |   |   超参数生成.ipynb
 |   |   
 |   \---log
-|           task_evaluate_20250507_113919.log
-|           task_evaluate_20250507_114148.log
-|           task_evaluate_20250507_153900.log
-|           task_evaluate_20250507_154623.log
-|           task_evaluate_20250507_154657.log
+|           prepare_data_xiaowang_jobid12.log
+|           prepare_data_xiaowang_jobid13.log
+|           prepare_data_xiaowang_jobid14.log
+|           task_evaluate_xiaowang_jobid11.log
+|           task_evaluate_xiaowang_jobid14.log
+|           task_post_process_xiaowang_jobid14.log
 |           
 +---models
 +---results
 +---scripts
-|       prepare_data.cmd
+|       debug_run.py
 |       prepare_data.py
-|       prepare_new_job.py
-|       task_evaluate.cmd
+|       taks_post_process.py
 |       task_evaluate.py
 |       
 +---src
 |   +---data_manager
 |   |   |   data_send_src.py
-|   |   |   数据读取与处理notebook.ipynb
+|   |   |   任务原始数据读取与处理notebook.ipynb
 |   |   |   
 |   |   \---__pycache__
 |   |           data_send_src.cpython-310.pyc
 |   |           
 |   +---model_evaluator
 |   |   |   evaluate_src.py
+|   |   |   post_process_src.py
 |   |   |   
 |   |   \---__pycache__
 |   |           evaluate_src.cpython-310.pyc
+|   |           post_process_src.cpython-310.pyc
 |   |           
 |   +---task_manager
-|   |       create_new_job.py
-|   |       
 |   +---untils
 |   |   |   evaluate_function.py
 |   |   |   forecaster_fuction.py
@@ -842,12 +867,18 @@ C:.
 |       \---demo_test
 |           \---task1
 |                   model_train.ipynb
+|                   name_ls.joblib
 |                   
 \---web_interface
     |   db.sqlite3
     |   manage.py
-    |   web_readme.md
+    |   启动内网服务器.bat
+    |   启动本地服务器.bat
     |   
+    +---Forecaster
+    |   \---interactive_space
+    |       \---xiaowang
+    |           \---123
     +---mainapp
     |   |   admin.py
     |   |   apps.py
@@ -869,14 +900,15 @@ C:.
     |   |   |   base_generic.html
     |   |   |   
     |   |   +---mainapp
+    |   |   |       cloud_disk.html
     |   |   |       create_job.html
     |   |   |       home.html
     |   |   |       job_detail.html
-    |   |   |       login.html
     |   |   |       register.html
     |   |   |       
     |   |   \---registration
     |   |           login.html
+    |   |           password_change_form.html
     |   |           
     |   \---__pycache__
     |           admin.cpython-310.pyc

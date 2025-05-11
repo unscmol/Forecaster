@@ -8,5 +8,9 @@ urlpatterns = [
     path('password_change/', auth_views.PasswordChangeView.as_view(), name='password_change'),
     path('', views.home, name='home'),  # 主页
     path('create/', views.create_job, name='create_job'),  # 创建作业页面
+    path('job/<int:job_id>/finish/', views.finish_job, name='finish_job'),
     path('job/<int:job_id>/', views.job_detail, name='job_detail'),  # 作业详情页
+    path('job/<int:job_id>/evaluate/', views.submit_evaluation, name='submit_evaluation'),
+    path('cloud_disk/<str:username>/', views.cloud_disk, name='cloud_disk'),
+    path('download/<str:username>/<str:filename>/', views.download_file, name='download_file'),
 ]

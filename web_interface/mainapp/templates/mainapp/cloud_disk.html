@@ -1,0 +1,148 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="cloud-disk-card">
+      <h2>欢迎 {{ username }}, 这是您的云盘空间</h2>
+
+      {% if subpath %}
+        <p>当前位置: /{{ subpath }}</p>
+        <a href="?path={{ parent_path }}" class="btn-primary">返回上级</a>
+      {% endif %}
+
+      <!-- 上传文件 -->
+      <form method="post" enctype="multipart/form-data" style="margin-top: 10px;">
+        {% csrf_token %}
+        <input type="file" name="file" required>
+        <button type="submit" class="btn-primary">上传文件</button>
+      </form>
+
+      <!-- 新建文件夹 -->
+      <form method="post" style="margin-top: 10px;">
+        {% csrf_token %}
+        <input type="text" name="new_folder_name" placeholder="新文件夹名" required>
+        <input type="hidden" name="new_folder" value="1">
+        <button type="submit" class="btn-secondary">新建文件夹</button>
+      </form>
+
+      <!-- 文件列表 -->
+      <table>
+        <thead>
+          <tr><th>文件名</th><th>大小</th><th>操作</th></tr>
+        </thead>
+        <tbody>
+          {% for file in files %}
+            <tr>
+              <td>
+                {% if file.is_dir %}
+                  <a href="?path={{ subpath }}/{{ file.name }}">{{ file.name }}/</a>
+                {% else %}
+                  {{ file.name }}
+                {% endif %}
+              </td>
+              <td>{{ file.size }}</td>
+              <td>
+                {% if file.is_file %}
+                  <a href="{% url 'download_file' username file.name %}?path={{ subpath }}" class="btn-link">下载</a>
+                {% endif %}
+                <form method="post" style="display:inline;" onsubmit="return confirmDelete('{{ file.name }}');">
+                  {% csrf_token %}
+                  <input type="hidden" name="delete_file" value="{{ file.name }}">
+                  <button type="submit" class="btn-danger">删除</button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <br>
+      <a href="{% url 'home' %}" class="btn-primary">返回主页</a>
+    </div>
+  </div>
+{% endblock %}
+
+{% block style %}
+  <style>
+    .cloud-disk-card {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: auto;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-right: 10px;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      background-color: #5a6268;
+    }
+
+    .btn-link {
+      color: #28a745;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    .btn-danger {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-danger:hover {
+      background-color: #c82333;
+    }
+
+    input[type="file"], input[type="text"] {
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+  </style>
+{% endblock %}
+
+{% block script %}
+  <script>
+    function confirmDelete(filename) {
+      return confirm("确定要删除文件或文件夹 '" + filename + "' 吗？");
+    }
+  </script>
+{% endblock %}

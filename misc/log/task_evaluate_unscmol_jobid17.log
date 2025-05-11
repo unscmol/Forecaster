@@ -1,0 +1,33 @@
+[2025-05-11 22:29:11.052865] 开始评估任务 user_id=unscmol, job_id=17
+使用参数文件: C:\Users\ZY\Desktop\Forecaster\config\job_config\job_params_unscmol_17.json
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\model_class_cl_unscmol_1_17.py -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\model_class_cl_unscmol_1_17.py
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\model_class_hyperparams_unscmol_1_17.joblib -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\model_class_hyperparams_unscmol_1_17.joblib
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\model_class_js_unscmol_1_17.py -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\model_class_js_unscmol_1_17.py
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\model_class_jz_unscmol_1_17.py -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\model_class_jz_unscmol_1_17.py
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\model_class_lym_unscmol_1_17.py -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\model_class_lym_unscmol_1_17.py
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\model_class_qss_unscmol_1_17.py -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\model_class_qss_unscmol_1_17.py
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\model_class_wtl_unscmol_1_17.py -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\model_class_wtl_unscmol_1_17.py
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\model_class_zh_unscmol_1_17.py -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\model_class_zh_unscmol_1_17.py
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\model_para_cl_unscmol_1_17.pth -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\model_para_cl_unscmol_1_17.pth
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\model_para_js_unscmol_1_17.pth -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\model_para_js_unscmol_1_17.pth
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\model_para_jz_unscmol_1_17.pth -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\model_para_jz_unscmol_1_17.pth
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\model_para_lym_unscmol_1_17.pth -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\model_para_lym_unscmol_1_17.pth
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\model_para_qss_unscmol_1_17.pth -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\model_para_qss_unscmol_1_17.pth
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\model_para_wtl_unscmol_1_17.pth -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\model_para_wtl_unscmol_1_17.pth
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\model_para_zh_unscmol_1_17.pth -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\model_para_zh_unscmol_1_17.pth
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\scaler_cl_unscmol_1_17.joblib -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\scaler_cl_unscmol_1_17.joblib
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\scaler_js_unscmol_1_17.joblib -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\scaler_js_unscmol_1_17.joblib
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\scaler_jz_unscmol_1_17.joblib -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\scaler_jz_unscmol_1_17.joblib
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\scaler_lym_unscmol_1_17.joblib -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\scaler_lym_unscmol_1_17.joblib
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\scaler_qss_unscmol_1_17.joblib -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\scaler_qss_unscmol_1_17.joblib
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\scaler_wtl_unscmol_1_17.joblib -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\scaler_wtl_unscmol_1_17.joblib
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\unscmol\upload_data\scaler_zh_unscmol_1_17.joblib -> C:\Users\ZY\Desktop\Forecaster\data\user_data\unscmol\upload_data\scaler_zh_unscmol_1_17.joblib
+成功移动用户上传的文件！下面执行评估进程
+The accuracy of station cl is 91.3184754550457%
+The accuracy of station js is 91.30519926548004%
+The accuracy of station jz is 90.34764543175697%
+The accuracy of station lym is 91.07851758599281%
+The accuracy of station qss is 90.55769145488739%
+The accuracy of station wtl is 89.66094627976418%
+The accuracy of station zh is 91.49910807609558%
+[2025-05-11 22:29:32.504079] 评估完成 ✅
