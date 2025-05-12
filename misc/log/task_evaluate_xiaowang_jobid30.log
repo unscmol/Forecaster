@@ -1,0 +1,33 @@
+[2025-05-12 17:16:28.844742] 开始评估任务 user_id=xiaowang, job_id=30
+使用参数文件: C:\Users\ZY\Desktop\Forecaster\config\job_config\job_params_xiaowang_30.json
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\model_class_cl_xiaowang_1_30.py -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\model_class_cl_xiaowang_1_30.py
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\model_class_hyperparams_xiaowang_1_30.joblib -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\model_class_hyperparams_xiaowang_1_30.joblib
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\model_class_js_xiaowang_1_30.py -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\model_class_js_xiaowang_1_30.py
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\model_class_jz_xiaowang_1_30.py -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\model_class_jz_xiaowang_1_30.py
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\model_class_lym_xiaowang_1_30.py -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\model_class_lym_xiaowang_1_30.py
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\model_class_qss_xiaowang_1_30.py -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\model_class_qss_xiaowang_1_30.py
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\model_class_wtl_xiaowang_1_30.py -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\model_class_wtl_xiaowang_1_30.py
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\model_class_zh_xiaowang_1_30.py -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\model_class_zh_xiaowang_1_30.py
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\model_para_cl_xiaowang_1_30.pth -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\model_para_cl_xiaowang_1_30.pth
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\model_para_js_xiaowang_1_30.pth -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\model_para_js_xiaowang_1_30.pth
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\model_para_jz_xiaowang_1_30.pth -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\model_para_jz_xiaowang_1_30.pth
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\model_para_lym_xiaowang_1_30.pth -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\model_para_lym_xiaowang_1_30.pth
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\model_para_qss_xiaowang_1_30.pth -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\model_para_qss_xiaowang_1_30.pth
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\model_para_wtl_xiaowang_1_30.pth -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\model_para_wtl_xiaowang_1_30.pth
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\model_para_zh_xiaowang_1_30.pth -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\model_para_zh_xiaowang_1_30.pth
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\scaler_cl_xiaowang_1_30.joblib -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\scaler_cl_xiaowang_1_30.joblib
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\scaler_js_xiaowang_1_30.joblib -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\scaler_js_xiaowang_1_30.joblib
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\scaler_jz_xiaowang_1_30.joblib -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\scaler_jz_xiaowang_1_30.joblib
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\scaler_lym_xiaowang_1_30.joblib -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\scaler_lym_xiaowang_1_30.joblib
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\scaler_qss_xiaowang_1_30.joblib -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\scaler_qss_xiaowang_1_30.joblib
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\scaler_wtl_xiaowang_1_30.joblib -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\scaler_wtl_xiaowang_1_30.joblib
+文件已移动: C:\Users\ZY\Desktop\Forecaster\interactive_space\xiaowang\upload_data\scaler_zh_xiaowang_1_30.joblib -> C:\Users\ZY\Desktop\Forecaster\data\user_data\xiaowang\upload_data\scaler_zh_xiaowang_1_30.joblib
+成功移动用户上传的文件！下面执行评估进程
+The accuracy of station cl is 90.8460222184658%
+The accuracy of station js is 90.74545353651047%
+The accuracy of station jz is 90.42175635695457%
+The accuracy of station lym is 90.65310955047607%
+The accuracy of station qss is 90.39437621831894%
+The accuracy of station wtl is 89.25203830003738%
+The accuracy of station zh is 91.39565005898476%
+[2025-05-12 17:16:48.818722] 评估完成 ✅

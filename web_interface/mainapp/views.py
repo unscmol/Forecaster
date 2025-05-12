@@ -1,7 +1,5 @@
-import os
+import os, glob, shutil
 import json
-import shutil
-
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import AuthenticationForm
@@ -10,6 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.http import FileResponse, HttpResponseForbidden, Http404
 from urllib.parse import unquote as urlunquote
+from django.db.models import Case, When, IntegerField
 
 import subprocess
 from django.contrib.auth.forms import UserCreationForm
@@ -69,15 +68,43 @@ from .models import Job
 
 @login_required
 def home(request):
-    jobs = Job.objects.filter(user=request.user)
-
     task_type = request.GET.get("task_type", "1")
-    rankings = UserRanking.objects.filter(task_type=task_type).order_by("-best_score")
+    sort = request.GET.get("sort", "job_id")
+    order = request.GET.get("order", "asc")
+
+    # 合法排序字段列表
+    valid_sort_fields = ['job_id', 'task_type', 'status']
+    if sort not in valid_sort_fields:
+        sort = 'job_id'
+    if order not in ['asc', 'desc']:
+        order = 'asc'
+
+    # 排序顺序前缀
+    order_prefix = '' if order == 'asc' else '-'
+
+    # 排序：Favored 优先，再按指定字段排序
+    jobs = Job.objects.filter(user=request.user).order_by(
+        Case(
+            When(status='Favored', then=0),
+            When(status='Pending', then=1),
+            When(status='Finishing', then=2),
+            default=3,
+            output_field=IntegerField()
+        ),
+        f"{order_prefix}{sort}"
+    )
+
+    # 排行榜（按分数高低）
+    rankings = UserRanking.objects.select_related('user', 'best_job').filter(
+        task_type=task_type
+    ).order_by("-best_score")
 
     return render(request, 'mainapp/home.html', {
         'jobs': jobs,
         'rankings': rankings,
-        'task_type': task_type
+        'task_type': task_type,
+        'sort': sort,
+        'order': order,
     })
 
 @login_required
@@ -147,7 +174,7 @@ def job_detail(request, job_id): # 跳转作业细节页面
     job = Job.objects.get(job_id=job_id)  # 获取作业对象
     return render(request, 'mainapp/job_detail.html', {'job': job})
 
-@login_required
+
 @login_required
 def submit_evaluation(request, job_id):
     job = get_object_or_404(Job, job_id=job_id)
@@ -158,19 +185,19 @@ def submit_evaluation(request, job_id):
     params_path = os.path.join(main_path, 'config', 'job_config', params_filename)
 
     evaluate_path = os.path.join(main_path, 'scripts', 'task_evaluate.py')
-    postprocess_path = os.path.join(main_path, 'scripts', 'task_post_process.py')  # 注意拼写！
+    postprocess_path = os.path.join(main_path, 'scripts', 'task_post_process.py')
 
     log_dir = os.path.join(main_path, 'misc', 'log')
     download_dir = os.path.join(main_path, 'interactive_space', username, 'download_data')
     os.makedirs(download_dir, exist_ok=True)
 
-    # 构造日志文件名
     log_eval = f"task_evaluate_{username}_jobid{job_number}.log"
     log_post = f"task_post_process_{username}_jobid{job_number}.log"
     log_eval_path = os.path.join(log_dir, log_eval)
     log_post_path = os.path.join(log_dir, log_post)
 
     success = True
+    rank_score = None
 
     if os.path.exists(params_path):
         try:
@@ -182,6 +209,15 @@ def submit_evaluation(request, job_id):
         if success:
             try:
                 subprocess.run(['python', postprocess_path, params_path], check=True)
+                # ✅ 从缓存目录中读取 rank_score
+                score_file_path = os.path.join(main_path, 'data', 'temp', 'cached_data',
+                                               f'rank_score_jobid_{job_number}.txt')
+                if os.path.exists(score_file_path):
+                    with open(score_file_path, 'r') as f:
+                        rank_score = float(f.read().strip())
+                else:
+                    success = False
+                    print(f"[后处理失败] 找不到得分文件: {score_file_path}")
             except subprocess.CalledProcessError as e:
                 success = False
                 print(f"[后处理脚本失败] {e}")
@@ -189,10 +225,27 @@ def submit_evaluation(request, job_id):
         success = False
         print(f"[评估失败] 找不到参数文件: {params_path}")
 
-    # ✅ 最终成功才修改状态
-    if success:
+    if rank_score is None:
+        print("没有读取到RANK_SCORE:，无法更新job信息！")
+
+    if success and job.status != "Favored":
+        if rank_score is not None:
+            print(f"===> Writing rank_score={rank_score} to job {job.job_id}")
+            job.rank_score = rank_score
         job.status = "Finishing"
         job.save()
+
+        # 更新排行榜
+        from .models import UserRanking
+        if rank_score is not None:
+            UserRanking.objects.update_or_create(
+                user=job.user,
+                task_type=job.task_type,
+                defaults={
+                    'best_score': rank_score,
+                    'best_job': job,
+                }
+            )
     else:
         for log_file in [log_eval_path, log_post_path]:
             if os.path.exists(log_file):
@@ -295,7 +348,7 @@ def download_file(request, username, filename):
 @login_required
 def rankings(request):
     task_type = request.GET.get("task_type", "1")
-    rankings = UserRanking.objects.filter(task_type=task_type).order_by("-best_score")
+    rankings = UserRanking.objects.select_related('best_job').filter(task_type=task_type).order_by("-best_score")
     return render(request, 'mainapp/rankings.html', {
         'rankings': rankings,
         'task_type': task_type
@@ -304,9 +357,64 @@ def rankings(request):
 
 
 
+@login_required
+def mark_favored(request, job_id):
+    job = get_object_or_404(Job, job_id=job_id, user=request.user)
+    job.status = "Favored"
+    job.save()
+    return redirect('job_detail', job_id=job_id)
 
 
+@login_required
+def unmark_favored(request, job_id):
+    job = get_object_or_404(Job, job_id=job_id, user=request.user)
 
+    if job.status == "Favored":
+        job.status = "Finishing"
+        job.save()
+
+    return redirect('job_detail', job_id=job_id)
+
+
+@login_required
+def organize_jobs(request):
+    if request.method == "POST":
+        finishing_jobs = Job.objects.filter(user=request.user, status="Finishing")
+        username = request.user.username
+        base = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))  # Forecaster根目录
+
+        for job in finishing_jobs:
+            job_id = job.job_id
+
+            # 删除文件夹1: config/job_config/*
+            pattern1 = os.path.join(base, 'config', 'job_config', f'*_{job_id}.*')
+            for path in glob.glob(pattern1):
+                os.remove(path)
+
+            # 删除文件夹2: data/user_data/<user>/download_data/*
+            pattern2 = os.path.join(base, 'data', 'user_data', username, 'download_data', f'*_{job_id}.*')
+            for path in glob.glob(pattern2):
+                os.remove(path)
+
+            # 删除文件夹3: data/user_data/<user>/upload_data/*
+            pattern3 = os.path.join(base, 'data', 'user_data', username, 'upload_data', f'*_{job_id}.*')
+            for path in glob.glob(pattern3):
+                os.remove(path)
+
+            # 删除文件夹4: data/user_data/<user>/test_job_data/job_id/
+            folder4 = os.path.join(base, 'data', 'user_data', username, 'test_job_data', str(job_id))
+            if os.path.exists(folder4):
+                shutil.rmtree(folder4)
+
+            # 删除文件夹5: interactive_space/<user>/download_data/*
+            pattern5 = os.path.join(base, 'interactive_space', username, 'download_data', f'*_{job_id}.*')
+            for path in glob.glob(pattern5):
+                os.remove(path)
+
+            # 最后从数据库中删除 Job 对象
+            job.delete()
+
+    return redirect('home')
 
 
 

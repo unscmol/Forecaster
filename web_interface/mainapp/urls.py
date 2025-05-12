@@ -13,4 +13,9 @@ urlpatterns = [
     path('job/<int:job_id>/evaluate/', views.submit_evaluation, name='submit_evaluation'),
     path('cloud_disk/<str:username>/', views.cloud_disk, name='cloud_disk'),
     path('download/<str:username>/<str:filename>/', views.download_file, name='download_file'),
+    path('job/<int:job_id>/favor/', views.mark_favored, name='mark_favored'),
+    path('organize/', views.organize_jobs, name='organize_jobs'),
+    path('job/<int:job_id>/unmark_favored/', views.unmark_favored, name='unmark_favored'),
+
+
 ]

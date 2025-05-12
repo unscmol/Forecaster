@@ -11,15 +11,28 @@
 
       <a href="{% url 'home' %}" class="btn-primary">返回主页</a>
 
-      <!-- 三个操作按钮横向排列 -->
+      <!-- 操作按钮 -->
       <div class="action-buttons">
+        <!-- 提交评估 -->
         <form method="POST" action="{% url 'submit_evaluation' job_id=job.job_id %}" style="display:inline;">
           {% csrf_token %}
           <button type="submit" class="btn-evaluate">提交评估</button>
         </form>
 
+        <!-- 云盘 -->
         <a href="{% url 'cloud_disk' job.user.username %}" class="btn-evaluate">访问云盘</a>
 
+        <!-- 收藏作业 -->
+        <form method="POST" action="{% url 'mark_favored' job_id=job.job_id %}" style="display:inline;">
+          {% csrf_token %}
+          <button type="submit" class="btn-favor">收藏作业</button>
+        </form>
+        <!-- 去除收藏 -->
+        <form method="POST" action="{% url 'unmark_favored' job_id=job.job_id %}" style="display:inline;">
+          {% csrf_token %}
+          <button type="submit" class="unmark-favor-btn">去除收藏</button>
+        </form>
+        <!-- 结束任务 -->
         <form method="POST" action="{% url 'finish_job' job_id=job.job_id %}" style="display:inline;" onsubmit="return confirm('确认结束该作业吗？');">
           {% csrf_token %}
           <button type="submit" class="btn-end">结束作业</button>
@@ -86,20 +99,21 @@
       justify-content: space-between;
       margin-top: 20px;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
-    .action-buttons .btn-evaluate,
-    .action-buttons .btn-end {
+    .action-buttons button,
+    .action-buttons a {
       flex: 1;
       padding: 12px;
       border: none;
       border-radius: 4px;
       font-weight: bold;
-      cursor: pointer;
-      color: white;
       font-size: 16px;
       text-align: center;
       text-decoration: none;
+      color: white;
+      cursor: pointer;
     }
 
     .btn-evaluate {
@@ -110,6 +124,14 @@
       background-color: #218838;
     }
 
+    .btn-favor {
+      background-color: #ffc107;
+    }
+
+    .btn-favor:hover {
+      background-color: #e0a800;
+    }
+
     .btn-end {
       background-color: #dc3545;
     }
@@ -117,5 +139,19 @@
     .btn-end:hover {
       background-color: #c82333;
     }
+
+    .unmark-favor-btn {
+    background-color: #f0ad4e;  /* 橙色 */
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .unmark-favor-btn:hover {
+    background-color: #ec971f;
+  }
   </style>
 {% endblock %}

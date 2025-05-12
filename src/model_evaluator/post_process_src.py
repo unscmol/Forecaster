@@ -17,7 +17,6 @@ import torch.optim.lr_scheduler as lr_scheduler
 from torch.optim import Adam
 from torch.utils.data import TensorDataset, DataLoader, Dataset
 
-
 # 计算项目根路径 Forecaster目录下
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
 
@@ -43,19 +42,13 @@ class Task_Processor:
         self.para = job_params
 
     '''Task1评估主函数'''
-    # 不要给任务加超参数，需要的超参数通过job_params指定就行。
-    def process_task1(self): # 直接写后处理逻辑，除了任务关注的东西外，必须要包含并返回 rank_score 变量，用于展示排名。
-        # 1. 加载计算好的结果
+    def process_task1(self):  # 一定要在最后print(f'RANK_SCORE: {rank_score:.6f}')  # ✅ 必须必须打印，否则不能提取分数！添加这一行用于submit_evaluation提取排名分
         data_dir = os.path.join(project_root, 'data')
         test_dic = joblib.load(
             os.path.join(data_dir, 'user_data', str(self.user_id), 'test_job_data', str(self.job_number),
                          'format_test_dic_{}_{}_{}.joblib'.format(self.user_id, self.task_id, self.job_number))
         )
-        name_ls = list(test_dic.keys()) # 读入包含每个场的id列表
-        '''
-        scaler_dic：评估需要用的结果和归一化参数，如果在evaluate_src逻辑中保存了反归一化的超参数，也可以不用再读入scaler_dic
-        约定俗成不用反归一化的任务可以直接不管👇不过任务1的评估需要用到每个场站最大值（假设为额定）
-        '''
+        name_ls = list(test_dic.keys())
         result_dic, scaler_dic = {}, {}
 
         for station_id in name_ls:
@@ -69,31 +62,26 @@ class Task_Processor:
             )
             result_dic[station_id] = joblib.load(result_path)
             scaler_dic[station_id] = joblib.load(scaler_path)
-        # 2. 遍历每个场站，计算综合精度与排名分
-        rank_score = 0 # 建议初始化为0，比没有值好，起码能上榜
+
+        rank_score = 0
         acc_list = []
         for station_id in name_ls:
-            scaler = scaler_dic[station_id]  # 加载场站归一化参数
+            scaler = scaler_dic[station_id]
             true, pre = result_dic[station_id]
             scaler_max = scaler.data_max_[0]
             acc = acc_cal(true, pre, scaler_max)
             print('The accuracy of station {} is {}%'.format(station_id, acc))
             acc_list.append(acc)
+
         rank_score = np.array(acc_list).mean()
+        print(f'RANK_SCORE: {rank_score:.10f}')  # ✅ 必须必须打印，否则不能提取分数！添加这一行用于submit_evaluation提取排名分
         return rank_score
 
-    '''
-    别忘了在以下执行方法中添加新任务的映射👇
-    '''
     def execute_process(self):
-        # 创建任务映射字典, 新建任务需要在字典中关联任务ID和续写的函数
         task_mapping = {
             1: self.process_task1
         }
-
         task_id = self.task_id
-
-        # 获取对应的方法并执行
         if task_id in task_mapping:
             return task_mapping[task_id]()
         else:

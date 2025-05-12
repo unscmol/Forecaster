@@ -28,6 +28,7 @@ django.setup()
 # ✅ 导入 Django 模型
 from django.contrib.auth.models import User
 from mainapp.models import UserRanking
+from mainapp.models import Job
 from post_process_src import Task_Processor
 
 
@@ -65,10 +66,23 @@ try:
     print(f"[{datetime.datetime.now()}] 评估完成 ✅")
     print("Rank Score is {}".format(rank_score))
 
+    # ✅ 保存 rank_score 到临时结果文件中供 Django 读取
+    score_path = os.path.join(project_root, 'data', 'temp', 'cached_data', f'rank_score_jobid_{job_number}.txt')
+    os.makedirs(os.path.dirname(score_path), exist_ok=True)
+    with open(score_path, 'w') as score_file:
+        score_file.write(f"{rank_score:.10f}")
+
+
     # ✅ 更新排行榜
     user = User.objects.get(username=username)
     entry, created = UserRanking.objects.get_or_create(user=user, task_type=job_params["task_id"])
+
     entry.best_score = max(entry.best_score, rank_score)
+
+    # ✅ 关键：设置关联作业号
+    job = Job.objects.get(user=user, job_id=job_number)
+    entry.best_job = job
+
     entry.save()
     print(f"[{datetime.datetime.now()}] 排行榜已更新 ✅")
 

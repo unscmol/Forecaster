@@ -1,0 +1,13 @@
+[2025-05-12 17:16:52.130169] 开始评估任务 user_id=xiaowang, job_id=30
+使用参数文件: C:\Users\ZY\Desktop\Forecaster\config\job_config\job_params_xiaowang_30.json
+The accuracy of station cl is 90.8460222184658%
+The accuracy of station js is 90.74545353651047%
+The accuracy of station jz is 90.42175635695457%
+The accuracy of station lym is 90.65310955047607%
+The accuracy of station qss is 90.39437621831894%
+The accuracy of station wtl is 89.25203830003738%
+The accuracy of station zh is 91.39565005898476%
+RANK_SCORE: 90.5297723200
+[2025-05-12 17:16:52.149317] 评估完成 ✅
+Rank Score is 90.529772319964
+[2025-05-12 17:16:52.158459] 排行榜已更新 ✅
