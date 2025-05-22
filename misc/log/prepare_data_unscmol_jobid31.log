@@ -1,0 +1,11 @@
+[2025-05-15 11:45:19.780094] 开始准备数据 user_id=unscmol, job_id=31
+使用参数文件: C:\Users\ZY\Desktop\Forecaster\config\job_config\job_params_unscmol_31.json
+场站 cl: 训练集大小 = 28032, 测试集大小 = 7008
+场站 js: 训练集大小 = 28032, 测试集大小 = 7008
+场站 jz: 训练集大小 = 28032, 测试集大小 = 7008
+场站 lym: 训练集大小 = 28032, 测试集大小 = 7008
+场站 qss: 训练集大小 = 28032, 测试集大小 = 7008
+场站 wtl: 训练集大小 = 28032, 测试集大小 = 7008
+场站 zh: 训练集大小 = 28032, 测试集大小 = 7008
+Success saving test data in user_data folder!
+[2025-05-15 11:45:20.099453] 数据准备完成 ✅
